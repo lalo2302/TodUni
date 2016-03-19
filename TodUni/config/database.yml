@@ -1,0 +1,8 @@
+development:
+  adapter: mysql
+  encoding: utf8
+  database: dbtoduni_development
+  username: root
+  password: 121233
+  host: 127.0.0.1
+  port: 3306

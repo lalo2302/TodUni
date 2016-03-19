@@ -11,7 +11,60 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160319214141) do
+ActiveRecord::Schema.define(version: 20160319221112) do
+
+  create_table "ciudads", force: :cascade do |t|
+    t.string   "nombre",     limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  create_table "comentarios", force: :cascade do |t|
+    t.text     "texto",      limit: 65535
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
+  create_table "estados", force: :cascade do |t|
+    t.string   "nombre",     limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  create_table "etapas", force: :cascade do |t|
+    t.integer  "numero_etapa", limit: 4
+    t.text     "descripcion",  limit: 65535
+    t.date     "fecha_final"
+    t.integer  "estatus",      limit: 4,     default: 0
+    t.integer  "horas",        limit: 4
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+  end
+
+  create_table "evidencia", force: :cascade do |t|
+    t.string   "titulo",      limit: 255
+    t.text     "descripcion", limit: 65535
+    t.string   "contenido",   limit: 255
+    t.integer  "estatus",     limit: 4,     default: 0
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
+  end
+
+  create_table "hashtags", force: :cascade do |t|
+    t.string   "tag",        limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  create_table "proyectos", force: :cascade do |t|
+    t.string   "titulo",      limit: 255
+    t.text     "descripcion", limit: 65535
+    t.string   "coordenadas", limit: 255
+    t.date     "fecha_final"
+    t.integer  "estatus",     limit: 4,     default: 0
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false
