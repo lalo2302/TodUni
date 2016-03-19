@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  numero_etapa: 1
+  descripcion: MyText
+  fecha_final: 2016-03-19
+  estatus: 1
+  horas: 1
+
+two:
+  numero_etapa: 1
+  descripcion: MyText
+  fecha_final: 2016-03-19
+  estatus: 1
+  horas: 1
