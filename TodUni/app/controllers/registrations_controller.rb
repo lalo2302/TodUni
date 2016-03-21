@@ -17,4 +17,8 @@ protected
       devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:username, :email, :password, :password_confirmation, :current_password, :name, :birth_date) }
     end
 
+    def update_resource(resource, params)
+    resource.update_without_password(params)
+  end
+
 end

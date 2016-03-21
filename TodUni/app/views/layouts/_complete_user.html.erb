@@ -1,0 +1,16 @@
+<%= form_for(@user, url: registration_path(@user), html: { method: :put }) do |f| %>
+
+  <div class="field">
+    <%= f.label :nombre %><br />
+    <%= f.text_field :name %>
+  </div>
+
+  <div>
+    <%= f.label :fecha_de_nacimiento %><br />
+    <%= f.date_select :birth_date, :order => [:day, :month, :year], :start_year => Date.today.year - 100, :end_year => Date.today.year %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Update" %>
+  </div>
+<% end %>

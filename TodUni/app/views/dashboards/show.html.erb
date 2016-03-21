@@ -6,6 +6,7 @@
   <%= link_to 'Crear Proyecto', new_project_path %> <br />
 <% else %>
   <p>Llena tu informacion para crear un proyecto</p><br />
+  <%= render 'layouts/complete_user' %>
 <% end %>
 
 <%= link_to 'Editar Info', edit_user_registration_path %></p>
