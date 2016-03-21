@@ -1,17 +1,17 @@
-<% provide(:nombre, 'Crear proyecto') %>
+<% provide(:name, 'Crear proyecto') %>
 <h1>Crear proyecto</h1>
 <div class="row">
 	<div class="col-md-6 col-md-offset-3">
-		<%= form_for(@proyecto) do |f| %>
+		<%= form_for(@project) do |f| %>
 
 			<%= f.label :Nombre %>
-			<%= f.text_field :nombre, class: 'form-control' %>
+			<%= f.text_field :name, class: 'form-control' %>
 			
 			<%= f.label :Descripción %>
-			<%= f.text_area :descripcion, class: 'form-control' %>
+			<%= f.text_area :description, class: 'form-control' %>
 			
 			<%= f.label :Coordenadas %>
-			<%= f.text_field :coordenadas, class: 'form-control' %>
+			<%= f.text_field :coordinates, class: 'form-control' %>
 			
 
 			<%= f.submit "Crear proyecto", class: "btn btn-primary"%>
