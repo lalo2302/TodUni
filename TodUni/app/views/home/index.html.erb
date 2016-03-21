@@ -3,3 +3,4 @@
 
 <%= link_to 'Registrate', new_user_registration_path %>
 <%= link_to 'Ingresa', new_user_session_path %>
+<%= link_to 'Salir', destroy_user_session_path, :method => 'delete' unless !user_signed_in? %>
