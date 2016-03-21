@@ -3,8 +3,13 @@
     <%= link_to "Toduni", '/', id: "logo" %>
     <nav>
       <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to "Users",   '/users/sign_up' %></li>
-        <li><%= link_to "Proyectos",   '/proyectos/new' %></li>
+      <% if user_signed_in? %>
+        <li><%= link_to "Dashboard",   dashboard_path(@user) %></li>
+        <li><%= link_to "Salir",   destroy_user_session_path, :method => :delete %></li>
+      <% else %>
+        <li><%= link_to "Registrate",   new_user_registration_path %></li>
+        <li><%= link_to "Ingresa",   new_user_session_path %></li>
+      <% end %>
       </ul>
     </nav>
   </div>

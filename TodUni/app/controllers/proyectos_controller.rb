@@ -5,6 +5,7 @@ class ProyectosController < ApplicationController
 	end
 
   def new
+    @user = current_user
   	@proyecto = Proyecto.new
   end
 
