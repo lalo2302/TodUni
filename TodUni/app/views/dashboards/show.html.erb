@@ -2,3 +2,7 @@
 <p>User: <%= @user.email%></p>
 <%= link_to 'Salir', destroy_user_session_path, :method => 'delete' %>
 <%= link_to 'Crear Proyecto', new_project_path %>
+
+<% if !@user.complete? %>
+  <p>Llena tu informacion para crear un proyecto <%= link_to 'Editar Info', edit_user_registration_path %></p>
+<% end %>

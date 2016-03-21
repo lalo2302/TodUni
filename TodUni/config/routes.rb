@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
+  root "home#index"
   resources :dashboards, :only => :show
    #match 'dashboards/:id', :to => "dashboards#show", :as => :username, :via => :get
   devise_for :users, :controllers => { :registrations => "registrations" }
-  root "home#index"
+
   
   
   resources :projects
