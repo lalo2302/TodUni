@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
   resources :dashboards, :only => :show
-  match 'dashboards/:id', :to => "dashboards#show", :as => :username, :via => :get
+   #match 'dashboards/:id', :to => "dashboards#show", :as => :username, :via => :get
   devise_for :users, :controllers => { :registrations => "registrations" }
   root "home#index"
   
-  get 'projects/new'
+  
   resources :projects
 
   # The priority is based upon order of creation: first created -> highest priority.
