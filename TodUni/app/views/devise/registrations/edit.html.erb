@@ -8,6 +8,16 @@
     <%= f.email_field :email, autofocus: true %>
   </div>
 
+  <div class="field">
+    <%= f.label :nombre %><br />
+    <%= f.text_field :name, autofocus: true %>
+  </div>
+
+  <div>
+    <%= f.label :fecha_de_nacimiento %><br />
+    <%= f.date_select :birth_date, :order => [:day, :month, :year], :start_year => Date.today.year - 100, :end_year => Date.today.year %>
+  </div>
+
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>

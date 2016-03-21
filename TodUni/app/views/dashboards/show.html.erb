@@ -1,8 +1,11 @@
 <h1>Dashboard#Show</h1>
 <p>User: <%= @user.email%></p>
-<%= link_to 'Salir', destroy_user_session_path, :method => 'delete' %>
-<%= link_to 'Crear Proyecto', new_project_path %>
+<%= link_to 'Salir', destroy_user_session_path, :method => 'delete' %> <br />
 
-<% if !@user.complete? %>
-  <p>Llena tu informacion para crear un proyecto <%= link_to 'Editar Info', edit_user_registration_path %></p>
+<% if @user.complete? %>
+  <%= link_to 'Crear Proyecto', new_project_path %> <br />
+<% else %>
+  <p>Llena tu informacion para crear un proyecto</p><br />
 <% end %>
+
+<%= link_to 'Editar Info', edit_user_registration_path %></p>
