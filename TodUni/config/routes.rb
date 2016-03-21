@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :dashboards
+  devise_for :users, :controllers => { :registrations => "registrations" }
+  root "home#index"
+  
   get 'proyectos/new'
 
   devise_for :users
