@@ -12,10 +12,11 @@
 			
 			<%= f.label :Coordenadas %>
 			<%= f.text_field :coordinates, class: 'form-control' %>
-			
+
+			<%= f.label :Integrantes %>
+			<%= f.text_field :users, value:'', class: 'form-control' %>
 
 			<%= f.submit "Crear proyecto", class: "btn btn-primary"%>
-
 		<% end %>
 	</div>
 </div>
