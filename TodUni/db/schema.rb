@@ -11,19 +11,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160319225047) do
+ActiveRecord::Schema.define(version: 20160321053403) do
 
   create_table "ciudades", force: :cascade do |t|
     t.string   "nombre",     limit: 255
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+    t.integer  "id_estado",  limit: 4
   end
 
+  add_index "ciudades", ["id_estado"], name: "index_ciudades_on_id_estado", using: :btree
+
   create_table "comentarios", force: :cascade do |t|
-    t.text     "texto",      limit: 65535
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.text     "texto",       limit: 65535
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.integer  "id_proyecto", limit: 4
+    t.integer  "id_user",     limit: 4
   end
+
+  add_index "comentarios", ["id_proyecto"], name: "index_comentarios_on_id_proyecto", using: :btree
+  add_index "comentarios", ["id_user"], name: "index_comentarios_on_id_user", using: :btree
 
   create_table "estados", force: :cascade do |t|
     t.string   "nombre",     limit: 255
@@ -39,7 +47,10 @@ ActiveRecord::Schema.define(version: 20160319225047) do
     t.integer  "horas",        limit: 4
     t.datetime "created_at",                             null: false
     t.datetime "updated_at",                             null: false
+    t.integer  "id_proyecto",  limit: 4
   end
+
+  add_index "etapas", ["id_proyecto"], name: "index_etapas_on_id_proyecto", using: :btree
 
   create_table "evidencias", force: :cascade do |t|
     t.string   "titulo",      limit: 255
@@ -48,7 +59,12 @@ ActiveRecord::Schema.define(version: 20160319225047) do
     t.integer  "estatus",     limit: 4,     default: 0
     t.datetime "created_at",                            null: false
     t.datetime "updated_at",                            null: false
+    t.integer  "id_etapa",    limit: 4
+    t.integer  "id_user",     limit: 4
   end
+
+  add_index "evidencias", ["id_etapa"], name: "index_evidencias_on_id_etapa", using: :btree
+  add_index "evidencias", ["id_user"], name: "index_evidencias_on_id_user", using: :btree
 
   create_table "hashtags", force: :cascade do |t|
     t.string   "tag",        limit: 255
@@ -64,7 +80,26 @@ ActiveRecord::Schema.define(version: 20160319225047) do
     t.integer  "estatus",     limit: 4,     default: 0
     t.datetime "created_at",                            null: false
     t.datetime "updated_at",                            null: false
+    t.integer  "id_ciudad",   limit: 4
   end
+
+  add_index "proyectos", ["id_ciudad"], name: "index_proyectos_on_id_ciudad", using: :btree
+
+  create_table "proyectos_hashtags", id: false, force: :cascade do |t|
+    t.integer "id_proyecto", limit: 4
+    t.integer "id_hashtag",  limit: 4
+  end
+
+  add_index "proyectos_hashtags", ["id_hashtag"], name: "index_proyectos_hashtags_on_id_hashtag", using: :btree
+  add_index "proyectos_hashtags", ["id_proyecto"], name: "index_proyectos_hashtags_on_id_proyecto", using: :btree
+
+  create_table "proyectos_users", id: false, force: :cascade do |t|
+    t.integer "id_proyecto", limit: 4
+    t.integer "id_user",     limit: 4
+  end
+
+  add_index "proyectos_users", ["id_proyecto"], name: "index_proyectos_users_on_id_proyecto", using: :btree
+  add_index "proyectos_users", ["id_user"], name: "index_proyectos_users_on_id_user", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false
