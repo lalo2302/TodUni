@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'profiles/show'
+
   root "home#index"
   resources :dashboards, :only => :show
    #match 'dashboards/:id', :to => "dashboards#show", :as => :username, :via => :get
