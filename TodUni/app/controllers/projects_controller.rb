@@ -1,5 +1,9 @@
 class ProjectsController < ApplicationController
-	
+
+  def index
+    @projects = Project.all
+  end
+  
 	def show
     @user = current_user
 		@project = Project.find(params[:id])
@@ -11,7 +15,7 @@ class ProjectsController < ApplicationController
   end
 
   def create
-  	@project = Project.new(project_params)
+  	@project = current_user.projects.build(project_params)
     assign_usernames(@project)
   	if @project.save
   		flash[:success] = "Proyecto creado!"
