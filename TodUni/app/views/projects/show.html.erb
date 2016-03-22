@@ -1,7 +1,6 @@
 <% provide(:name, @project.name) %>
-
 <div class="row">
-	<aside class="col-md-4">
+	<aside class="col-md-3">
 		<section class="info_proyecto">
 			<h1> <%= @project.name %> </h1>
 			<br/>id: 				<%= @project.id %>
@@ -10,4 +9,7 @@
 			<br/>estatus: 			<%= @project.status %>
 		</section>
 	</aside>
+	<div class="col-md-6">
+		<%= image_tag @project.picture.url, :class => "cover_picture" if @project.picture? %>
+	</div>
 </div>

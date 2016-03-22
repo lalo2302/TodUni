@@ -1,0 +1,17 @@
+<% provide(:title, "Proyectos") %>
+<h1>Proyectos</h1>
+
+<ul class="projects">
+	<% @projects.each do |project| %>
+		<li>
+		<div class="col-md-2 col-md-offset-2">
+			<%= image_tag project.picture.url, :class => "thumbnail" if project.picture? %>
+		</div>
+		<div class="col-md-6">
+			<h4> <%= link_to project.name, project %> </h4>
+			<br/>
+			<%= project.description %>
+		</div>
+		</li>
+	<% end %>
+</ul>

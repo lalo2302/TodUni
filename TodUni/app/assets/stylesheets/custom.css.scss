@@ -77,6 +77,31 @@ p {
   }
 }
 
+.cover_picture {
+  width: 600px;
+  height: 250px;
+  border: 2px solid #eee;
+  border-radius: 4px;
+}
+
+.thumbnail {
+  width: 150px;
+  height: 150px;
+  border-radius: 2px;
+}
+
+/* Projects index */
+
+.projects {
+  list-style: none;
+  margin: 0;
+  li {
+    overflow: auto;
+    padding: 10px 0;
+    border-bottom: 1px solid $gray-lighter;
+  }
+}
+
 /* sidebar */
 
 aside {

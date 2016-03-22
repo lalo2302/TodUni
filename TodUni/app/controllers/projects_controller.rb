@@ -1,9 +1,10 @@
 class ProjectsController < ApplicationController
 
   def index
+    @user = current_user
     @projects = Project.all
   end
-  
+
 	def show
     @user = current_user
 		@project = Project.find(params[:id])
@@ -28,7 +29,7 @@ class ProjectsController < ApplicationController
   private  
 
   	def project_params
-  		params.require(:project).permit(:name, :description, :coordinates)
+  		params.require(:project).permit(:name, :description, :coordinates, :picture)
   	end
 
     def usernames
@@ -36,13 +37,9 @@ class ProjectsController < ApplicationController
     end
 
     def assign_usernames (project)
-      debugger
       usernames.values.each do |usr|
         if User.exists?(username: usr)
           project.users << User.where(username: usr)
-        #else
-         # render 'new'
-          #return false
         end
       end
     end
