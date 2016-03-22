@@ -16,6 +16,7 @@ class ProjectsController < ApplicationController
 
   def new
     @user = current_user
+    redirect_to dashboard_path(@user), :flash => {notice: "Necesitas completar tu informacion"} unless @user.complete?
   	@project = Project.new
   end
 
