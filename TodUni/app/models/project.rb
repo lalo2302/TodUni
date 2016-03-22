@@ -8,4 +8,5 @@ class Project < ActiveRecord::Base
 	has_many :comments
 	belongs_to :city
 
+	validates :name, presence: true
 end

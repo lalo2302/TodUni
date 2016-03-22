@@ -12,6 +12,7 @@ class ProjectsController < ApplicationController
 
   def create
   	@project = Project.new(project_params)
+    assign_usernames(@project)
   	if @project.save
   		flash[:success] = "Proyecto creado!"
   		redirect_to @project
@@ -26,4 +27,19 @@ class ProjectsController < ApplicationController
   		params.require(:project).permit(:name, :description, :coordinates)
   	end
 
+    def usernames
+      params.require(:project).permit(:users)
+    end
+
+    def assign_usernames (project)
+      debugger
+      usernames.values.each do |usr|
+        if User.exists?(username: usr)
+          project.users << User.where(username: usr)
+        #else
+         # render 'new'
+          #return false
+        end
+      end
+    end
 end
