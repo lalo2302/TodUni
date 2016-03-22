@@ -11,7 +11,6 @@ class ProjectsController < ApplicationController
   def create
   	@project = Project.new(project_params)
     assign_usernames(@project)
-
   	if @project.save
   		flash[:success] = "Proyecto creado!"
   		redirect_to @project
@@ -34,9 +33,9 @@ class ProjectsController < ApplicationController
       usernames.values.each do |usr|
         if User.exists?(username: usr)
           project.users << User.where(username: usr)
-        else
-          render 'new'
-          return
+        #else
+         # render 'new'
+          #return false
         end
       end
     end
