@@ -12,7 +12,6 @@ class Project < ActiveRecord::Base
 	
 	validates :name, presence: true
 	validate :picture_size
-	validate :username_exist
 
 	private
 		# Validates the size of an uploaded picture.
