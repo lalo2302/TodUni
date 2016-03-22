@@ -1,6 +1,11 @@
 <% provide(:title, "Proyectos") %>
 <h1>Proyectos</h1>
 
+<div class="tag_cloud">
+	<% tag_cloud Project.tag_counts, %w(css1 css2 css3 css4) do |tag, css_class| %>
+  	<%= link_to tag.name, tag_path(tag.name), :class => css_class %>
+	<% end %>
+</div>
 <ul class="projects">
 	<% @projects.each do |project| %>
 		<li>
@@ -9,8 +14,12 @@
 		</div>
 		<div class="col-md-6">
 			<h4> <%= link_to project.name, project %> </h4>
-			<br/>
+			<p>
 			<%= project.description %>
+			</p>
+			<p>
+			Tags: <%= raw project.tag_list.map{ |t| link_to t, tag_path(t) }.join(", ").html_safe %>
+			</p>
 		</div>
 		</li>
 	<% end %>
