@@ -2,7 +2,11 @@ class ProjectsController < ApplicationController
 
   def index
     @user = current_user
-    @projects = Project.all
+    if params[:tag]
+      @projects = Project.tagged_with(params[:tag])
+    else
+      @projects = Project.all
+    end
   end
 
 	def show
@@ -19,6 +23,7 @@ class ProjectsController < ApplicationController
     @user = current_user
   	@project = @user.projects.build(project_params)
     assign_usernames(@project)
+    
   	if @project.save
   		flash[:success] = "Proyecto creado!"
   		redirect_to @project
@@ -30,7 +35,7 @@ class ProjectsController < ApplicationController
   private  
 
   	def project_params
-  		params.require(:project).permit(:name, :description, :coordinates, :picture)
+  		params.require(:project).permit(:name, :description, :coordinates, :picture, :tag_list)
   	end
 
     def usernames

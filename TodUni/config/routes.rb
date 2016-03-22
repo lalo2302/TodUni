@@ -1,13 +1,14 @@
 Rails.application.routes.draw do
   get 'profiles/show'
 
+  get 'tags/:tag', :to => 'projects#index'
   root "home#index"
   resources :dashboards, :only => :show
    #match 'dashboards/:id', :to => "dashboards#show", :as => :username, :via => :get
   devise_for :users, :controllers => { :registrations => "registrations" }
 
   
-  
+  resources :tags
   resources :projects
 
   # The priority is based upon order of creation: first created -> highest priority.
