@@ -4,9 +4,10 @@ class Project < ActiveRecord::Base
 
 	has_and_belongs_to_many :users
 	has_many :stages
-	has_and_belongs_to_many :hashtags
 	has_many :comments
 	belongs_to :city
+
+	acts_as_taggable
 
 	mount_uploader :picture, PictureUploader
 	

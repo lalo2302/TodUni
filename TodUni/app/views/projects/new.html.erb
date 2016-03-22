@@ -17,7 +17,10 @@
 			<%= f.text_field :coordinates, class: 'form-control' %>
 
 			<%= f.label :Integrantes %>
-			<%= f.text_field :users, 'data-role'=>'tagsinput', value:'', class: 'form-control' %>
+			<%= f.text_field :users, value:'', class: 'form-control' %>
+			
+			<%= f.label :Hashtags, "Hashtags (separados por comas)" %>
+			<%= f.text_field :tag_list, class: 'form-control' %>
 
 			<%= f.submit "Crear proyecto", class: "btn btn-primary"%>
 		<% end %>
