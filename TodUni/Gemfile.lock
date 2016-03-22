@@ -47,6 +47,8 @@ GEM
       sass (>= 3.4.19)
     bootstrap-sass (3.2.0.0)
       sass (~> 3.2)
+    bootstrap-tagsinput-rails (0.4.2.1)
+      railties (>= 3.1)
     builder (3.2.2)
     byebug (8.2.2)
     coffee-rails (4.1.1)
@@ -165,6 +167,7 @@ PLATFORMS
 DEPENDENCIES
   bootstrap
   bootstrap-sass
+  bootstrap-tagsinput-rails
   byebug
   coffee-rails (~> 4.1.0)
   devise

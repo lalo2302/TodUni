@@ -7,9 +7,6 @@ class Project < ActiveRecord::Base
 	has_and_belongs_to_many :hashtags
 	has_many :comments
 	belongs_to :city
-	accepts_nested_attributes_for :users
 
 	validates :name, presence: true
-	validates :users, inclusion: { in: User.all,
-		message: "%{value} is not a valid username" }
 end

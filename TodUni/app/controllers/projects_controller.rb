@@ -30,6 +30,7 @@ class ProjectsController < ApplicationController
     end
 
     def assign_usernames (project)
+      debugger
       usernames.values.each do |usr|
         if User.exists?(username: usr)
           project.users << User.where(username: usr)
