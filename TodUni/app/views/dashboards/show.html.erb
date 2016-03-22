@@ -1,11 +1,13 @@
+<% provide(:title, "Hola! #{@user.name}") %>
 <h1>Dashboard#Show</h1>
-<p>User: <%= @user.email%></p>
+<p>Email: <%= @user.email %></p>
+<p>Nombre <%= @user.name %></p>
 <%= link_to 'Salir', destroy_user_session_path, :method => 'delete' %> <br />
 
 <% if @user.complete? %>
   <%= link_to 'Crear Proyecto', new_project_path %> <br />
 <% else %>
-  <p>Llena tu informacion para crear un proyecto</p><br />
+  <p>Necesitamos que nos des un poco de informacion para que crees tu primer proyecto</p><br />
   <%= render 'layouts/complete_user' %>
 <% end %>
 
