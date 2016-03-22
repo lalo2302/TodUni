@@ -16,7 +16,8 @@ class ProjectsController < ApplicationController
   end
 
   def create
-  	@project = current_user.projects.build(project_params)
+    @user = current_user
+  	@project = @user.projects.build(project_params)
     assign_usernames(@project)
   	if @project.save
   		flash[:success] = "Proyecto creado!"
