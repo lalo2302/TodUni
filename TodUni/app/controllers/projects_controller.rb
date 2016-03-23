@@ -21,7 +21,8 @@ class ProjectsController < ApplicationController
 
   def create
     @user = current_user
-  	@project = @user.projects.build(project_params)
+  	@project = Project.new(project_params)
+    @user.projects << @project
     assign_usernames(@project)
     
   	if @project.save
@@ -43,6 +44,8 @@ class ProjectsController < ApplicationController
     end
 
     def assign_usernames (project)
+      debugger
+      users = usernames.values.first.split(',')
       usernames.values.each do |usr|
         if User.exists?(username: usr)
           project.users << User.where(username: usr)
