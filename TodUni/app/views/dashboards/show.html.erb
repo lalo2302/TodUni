@@ -2,6 +2,7 @@
 <h1>Dashboard#Show</h1>
 <p>Email: <%= @user.email %></p>
 <p>Nombre <%= @user.name %></p>
+<%= link_to 'Editar Info', edit_user_registration_path %></p>
 <%= link_to 'Salir', destroy_user_session_path, :method => 'delete' %> <br />
 
 <% if @user.complete? %>
@@ -11,4 +12,9 @@
   <%= render 'layouts/complete_user' %>
 <% end %>
 
-<%= link_to 'Editar Info', edit_user_registration_path %></p>
+<% if !@projects.empty? %>
+  <h2>Tus proyectos</h2>
+  <%= render 'layouts/show_projects' %>
+<% else %>
+  <h2>Vamos! <%= link_to 'Crea un proyecto!', new_project_path %>
+<% end %>

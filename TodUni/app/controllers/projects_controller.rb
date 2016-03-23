@@ -2,6 +2,7 @@ class ProjectsController < ApplicationController
 
   def index
     @user = current_user
+    @tag_counts = Project.tag_counts
     if params[:tag]
       @projects = Project.tagged_with(params[:tag])
     else
