@@ -7,7 +7,6 @@ Rails.application.routes.draw do
    #match 'dashboards/:id', :to => "dashboards#show", :as => :username, :via => :get
   devise_for :users, :controllers => { :registrations => "registrations" }
 
-  
   resources :tags
   resources :projects
 

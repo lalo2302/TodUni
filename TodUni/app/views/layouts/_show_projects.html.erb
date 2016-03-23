@@ -10,7 +10,7 @@
       <%= project.description %>
       </p>
       <p>
-      Tags: <%= raw project.tag_list.map{ |t| link_to t, tag_path(t) }.join(", ").html_safe %>
+      Tags: <%= raw add_links(project.tag_list) %>
       </p>
     </div>
     </li>

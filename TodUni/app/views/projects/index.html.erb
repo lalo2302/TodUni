@@ -1,8 +1,8 @@
 <% provide(:title, "Proyectos") %>
 <h1>Proyectos</h1>
 
-<div class="tag_cloud">
-	<% tag_cloud @tag_counts, %w(css1 css2 css3 css4) do |tag, css_class| %>
+<div class="tag_cloud row-fluid">
+	<% tag_cloud Project.tag_counts, %w(css1 css2 css3 css4) do |tag, css_class| %>
   	<%= link_to tag.name, tag_path(tag.name), :class => css_class %>
 	<% end %>
 </div>
