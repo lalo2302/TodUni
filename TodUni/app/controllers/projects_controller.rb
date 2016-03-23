@@ -46,7 +46,9 @@ class ProjectsController < ApplicationController
     end
 
     def assign_usernames (project)
-      usernames.values.each do |usr|
+      debugger
+      participants = usernames.values.first.split(", ")
+      participants.each do |usr|
         if User.exists?(username: usr)
           project.users << User.where(username: usr)
         end
