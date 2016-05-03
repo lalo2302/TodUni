@@ -18,14 +18,15 @@
 
 			<%= f.label :Integrantes %>
 			<%= f.text_field :users, value:'', class: 'form-control' %>
-			
+			<p>
 			<%= f.label :Hashtags, "Hashtags (separados por comas)" %>
 			<%= f.text_field :tag_list, class: 'form-control' %>
-
+			</p>
 			<%= f.submit "Crear proyecto", class: "btn btn-primary"%>
 		<% end %>
 	</div>
 </div>
+
 
 <script type="text/javascript">
 	$('#project_picture').bind('change', function() {
@@ -35,7 +36,3 @@
 		}
 	})
 </script>
-
-
-
-
