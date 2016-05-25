@@ -55,6 +55,13 @@ GEM
       railties (>= 3.1)
     builder (3.2.2)
     byebug (8.2.2)
+    capybara (2.6.2)
+      addressable
+      mime-types (>= 1.16)
+      nokogiri (>= 1.3.3)
+      rack (>= 1.0.0)
+      rack-test (>= 0.5.4)
+      xpath (~> 2.0)
     carrierwave (0.10.0)
       activemodel (>= 3.2.0)
       activesupport (>= 3.2.0)
@@ -310,16 +317,20 @@ GEM
       railties (>= 4.0)
       sprockets-rails (>= 2.0, < 4.0)
     xml-simple (1.1.5)
+    xpath (2.0.0)
+      nokogiri (~> 1.3)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   acts-as-taggable-on
+  bcrypt
   bootstrap
   bootstrap-sass
   bootstrap-tagsinput-rails
   byebug
+  capybara (= 2.6.2)
   carrierwave
   coffee-rails (~> 4.1.0)
   devise
