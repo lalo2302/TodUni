@@ -25,7 +25,7 @@ class ProjectsController < ApplicationController
     @user = current_user
   	@project = Project.new(project_params)
     @user.projects << @project
-    assign_usernames(@project)
+    assign_members(@project)
     
   	if @project.save
   		flash[:success] = "Proyecto creado!"
@@ -41,15 +41,15 @@ class ProjectsController < ApplicationController
   		params.require(:project).permit(:name, :description, :coordinates, :picture, :tag_list)
   	end
 
-    def usernames
+    def emails
       params.require(:project).permit(:users)
     end
 
-    def assign_usernames (project)
-      participants = usernames.values.first.split(', ')
+    def assign_members (project)
+      participants = emails.values.first.split(', ')
       participants.each do |usr|
-        if User.exists?(username: usr)
-          project.users << User.where(username: usr)
+        if User.exists?(email: usr)
+          project.users << User.where(email: usr)
         end
       end
     end
