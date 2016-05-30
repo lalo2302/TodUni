@@ -9,11 +9,10 @@ class User < ActiveRecord::Base
   has_many :evidences
 
 	def self.types
-		%w(Mentor NormalUser)
+		%w(Mentor)
 	end
 
 	scope :mentors, -> { where(type: 'Mentor') }  
-	scope :normal_users, -> { where(type: 'NormalUser') }
 
 
   def complete?
