@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160525164331) do
+ActiveRecord::Schema.define(version: 20160530160734) do
 
   create_table "cities", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(version: 20160525164331) do
     t.datetime "updated_at",                            null: false
     t.integer  "city_id",     limit: 4
     t.string   "picture",     limit: 255
+    t.integer  "mentor_id",   limit: 4
   end
 
   add_index "projects", ["city_id"], name: "index_projects_on_city_id", using: :btree
@@ -124,6 +125,7 @@ ActiveRecord::Schema.define(version: 20160525164331) do
     t.datetime "birth_date"
     t.string   "name",                   limit: 255
     t.integer  "status",                 limit: 4
+    t.string   "type",                   limit: 255
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

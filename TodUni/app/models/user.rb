@@ -8,6 +8,13 @@ class User < ActiveRecord::Base
   has_many :comments
   has_many :evidences
 
+	def self.types
+		%w(Mentor NormalUser)
+	end
+
+	scope :mentors, -> { where(type: 'Mentor') }  
+	scope :normal_users, -> { where(type: 'NormalUser') }
+
 
   def complete?
     @complete = true

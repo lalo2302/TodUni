@@ -1,0 +1,3 @@
+class NormalUser < User;
+
+end
