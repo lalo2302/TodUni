@@ -13,6 +13,7 @@ class ProjectsController < ApplicationController
 	def show
     @user = current_user
 		@project = Project.find(params[:id])
+		@members = @project.users
 	end
 
   def new
@@ -34,6 +35,17 @@ class ProjectsController < ApplicationController
   		render 'new'
   	end
   end
+
+	def add_members
+		email = params[:email]
+		#TODO: use current_user.projects
+		project = Project.find(params[:id])
+		@members = project.users
+		if User.exists?(email: email)
+			project.users << User.where(email: email)	
+		end	
+		redirect_to :back
+	end
 
   private  
 

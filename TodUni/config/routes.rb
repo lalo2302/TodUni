@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   get 'profiles/show'
-
+	post 'projects/add_members', :to => 'projects#add_members'
   get 'tags/:tag', :to => 'projects#index'
   root "home#index"
   resources :dashboards, :only => :show
