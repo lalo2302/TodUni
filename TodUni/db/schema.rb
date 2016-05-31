@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160530160734) do
+ActiveRecord::Schema.define(version: 20160531223053) do
 
   create_table "cities", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -40,24 +40,40 @@ ActiveRecord::Schema.define(version: 20160530160734) do
     t.integer  "status",      limit: 4,     default: 0
     t.datetime "created_at",                            null: false
     t.datetime "updated_at",                            null: false
-    t.integer  "stage_id",    limit: 4
+    t.integer  "phase_id",    limit: 4
     t.integer  "user_id",     limit: 4
   end
 
-  add_index "evidences", ["stage_id"], name: "index_evidences_on_stage_id", using: :btree
+  add_index "evidences", ["phase_id"], name: "index_evidences_on_phase_id", using: :btree
   add_index "evidences", ["user_id"], name: "index_evidences_on_user_id", using: :btree
 
+  create_table "phases", force: :cascade do |t|
+    t.integer  "phase_number",   limit: 4
+    t.text     "description",    limit: 65535
+    t.date     "date_end"
+    t.integer  "status",         limit: 4,     default: 0
+    t.integer  "hours",          limit: 4
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
+    t.integer  "project_id",     limit: 4
+    t.date     "date_beginning"
+  end
+
+  add_index "phases", ["project_id"], name: "index_phases_on_project_id", using: :btree
+
   create_table "projects", force: :cascade do |t|
-    t.string   "name",        limit: 255
-    t.text     "description", limit: 65535
-    t.string   "coordinates", limit: 255
-    t.date     "due_date"
-    t.integer  "status",      limit: 4,     default: 0
-    t.datetime "created_at",                            null: false
-    t.datetime "updated_at",                            null: false
-    t.integer  "city_id",     limit: 4
-    t.string   "picture",     limit: 255
-    t.integer  "mentor_id",   limit: 4
+    t.string   "name",           limit: 255
+    t.text     "description",    limit: 65535
+    t.string   "coordinates",    limit: 255
+    t.date     "date_end"
+    t.integer  "status",         limit: 4,     default: 0
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
+    t.integer  "city_id",        limit: 4
+    t.string   "picture",        limit: 255
+    t.integer  "mentor_id",      limit: 4
+    t.date     "date_beginning"
+    t.float    "budget",         limit: 24
   end
 
   add_index "projects", ["city_id"], name: "index_projects_on_city_id", using: :btree
@@ -65,23 +81,11 @@ ActiveRecord::Schema.define(version: 20160530160734) do
   create_table "projects_users", id: false, force: :cascade do |t|
     t.integer "project_id", limit: 4
     t.integer "user_id",    limit: 4
+    t.integer "role",       limit: 4, default: 0
   end
 
   add_index "projects_users", ["project_id"], name: "index_projects_users_on_project_id", using: :btree
   add_index "projects_users", ["user_id"], name: "index_projects_users_on_user_id", using: :btree
-
-  create_table "stages", force: :cascade do |t|
-    t.integer  "stage_num",   limit: 4
-    t.text     "description", limit: 65535
-    t.date     "due_date"
-    t.integer  "status",      limit: 4,     default: 0
-    t.integer  "hours",       limit: 4
-    t.datetime "created_at",                            null: false
-    t.datetime "updated_at",                            null: false
-    t.integer  "project_id",  limit: 4
-  end
-
-  add_index "stages", ["project_id"], name: "index_stages_on_project_id", using: :btree
 
   create_table "states", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -122,10 +126,11 @@ ActiveRecord::Schema.define(version: 20160530160734) do
     t.string   "last_sign_in_ip",        limit: 255
     t.datetime "created_at",                                      null: false
     t.datetime "updated_at",                                      null: false
-    t.datetime "birth_date"
+    t.datetime "date_birth"
     t.string   "name",                   limit: 255
     t.integer  "status",                 limit: 4
     t.string   "type",                   limit: 255
+    t.string   "avatar",                 limit: 255
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
