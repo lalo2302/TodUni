@@ -8,6 +8,8 @@ class User < ActiveRecord::Base
   has_many :comments
   has_many :evidences
 
+	validates :name, presence: true
+
 	def self.types
 		%w(Mentor)
 	end

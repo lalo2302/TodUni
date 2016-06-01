@@ -1,3 +1,3 @@
-class Mentor < User;
+class Mentor < User
 	has_many :projects
 end
