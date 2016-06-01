@@ -7,7 +7,7 @@ describe "The sigin process" do
 
 	it "signs in" do
 		user = FactoryGirl.create(:user)
-		user.save
+
 		visit new_user_session_path
 		fill_in :email, :with => 'example@example.com'
 		fill_in :password, :with => '12345678'
