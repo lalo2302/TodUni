@@ -7,5 +7,5 @@ def project_attributes(overrides = {})
 		date_end: Date.new(2016,12,31),
 		budget: 10000,
 		status: 1
-	}.merger(overrides)
+	}.merge(overrides)
 end
