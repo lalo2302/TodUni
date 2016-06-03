@@ -1,0 +1,13 @@
+<h3>Miembros</h3>
+<%= form_tag(projects_add_members_path) do  %>
+	<div class="fields">
+		<%= text_field_tag :email%>
+	</div>
+	<%= hidden_field_tag 'id', @project.id %>
+	<div class="actions">
+		<%= submit_tag "Agregar" %>
+	</div>
+<% end %>
+<% @members.each do |member| %>
+	<%= link_to member.name, "#" %>
+<% end %>
