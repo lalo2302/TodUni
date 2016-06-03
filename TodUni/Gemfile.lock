@@ -87,6 +87,11 @@ GEM
     erubis (2.7.0)
     excon (0.48.0)
     execjs (2.6.0)
+    factory_girl (4.7.0)
+      activesupport (>= 3.0.0)
+    factory_girl_rails (4.7.0)
+      factory_girl (~> 4.7.0)
+      railties (>= 3.0.0)
     fission (0.5.0)
       CFPropertyList (~> 2.2)
     fog (1.37.0)
@@ -334,6 +339,7 @@ DEPENDENCIES
   carrierwave
   coffee-rails (~> 4.1.0)
   devise
+  factory_girl_rails (~> 4.0)
   fog
   jbuilder (~> 2.0)
   jquery-rails

@@ -54,4 +54,13 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
+	
+
+	# Include wardens test helpers so the application think that a 
+	# user is signed in
+	
+	config.include Warden::Test::Helpers
+	config.before :suite do
+		Warden.test_mode!
+	end
 end
