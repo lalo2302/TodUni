@@ -25,11 +25,9 @@ class ProjectsController < ApplicationController
   def create
     @user = current_user
   	@project = Project.new(project_params)
-    @user.projects << @project
-    assign_members(@project)
     
   	if @project.save
-  		flash[:success] = "Proyecto creado!"
+    	@user.projects << @project
   		redirect_to @project
   	else
   		render 'new'
@@ -50,13 +48,14 @@ class ProjectsController < ApplicationController
   private  
 
   	def project_params
-  		params.require(:project).permit(:name, :description, :coordinates, :picture, :tag_list)
+  		params.require(:project).permit(:name, :description) 
   	end
 
     def emails
       params.require(:project).permit(:users)
     end
 
+		#TODO: Adapt this to add_members
     def assign_members (project)
       participants = emails.values.first.split(', ')
       participants.each do |usr|
