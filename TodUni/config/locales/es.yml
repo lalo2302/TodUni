@@ -8,4 +8,4 @@ es:
             description:
               blank: "Tu proyecto necesita descripcion" 
             name:
-              blank: "El proyecto necesita nombre" 
+              blank: "Tu proyecto necesita nombre" 
