@@ -2,12 +2,12 @@ class Project < ActiveRecord::Base
 	acts_as_taggable_on :tags
 	enum status: [:preproyecto, :en_progreso, :terminado, :cancelado]
 
-	#TODO: Leer has many trough
-	has_and_belongs_to_many :users
 	belongs_to :mentor
 	has_many :stages
 	has_many :comments
 	belongs_to :city
+	has_many :participations
+	has_many :users, through: :participations
 
 	mount_uploader :picture, PictureUploader
 	

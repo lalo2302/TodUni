@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160531223053) do
+ActiveRecord::Schema.define(version: 20160603173204) do
 
   create_table "cities", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -47,6 +47,15 @@ ActiveRecord::Schema.define(version: 20160531223053) do
   add_index "evidences", ["phase_id"], name: "index_evidences_on_phase_id", using: :btree
   add_index "evidences", ["user_id"], name: "index_evidences_on_user_id", using: :btree
 
+  create_table "participations", force: :cascade do |t|
+    t.integer "user_id",    limit: 4
+    t.integer "project_id", limit: 4
+    t.integer "role",       limit: 4, default: 0
+  end
+
+  add_index "participations", ["project_id"], name: "index_participations_on_project_id", using: :btree
+  add_index "participations", ["user_id"], name: "index_participations_on_user_id", using: :btree
+
   create_table "phases", force: :cascade do |t|
     t.integer  "phase_number",   limit: 4
     t.text     "description",    limit: 65535
@@ -77,15 +86,6 @@ ActiveRecord::Schema.define(version: 20160531223053) do
   end
 
   add_index "projects", ["city_id"], name: "index_projects_on_city_id", using: :btree
-
-  create_table "projects_users", id: false, force: :cascade do |t|
-    t.integer "project_id", limit: 4
-    t.integer "user_id",    limit: 4
-    t.integer "role",       limit: 4, default: 0
-  end
-
-  add_index "projects_users", ["project_id"], name: "index_projects_users_on_project_id", using: :btree
-  add_index "projects_users", ["user_id"], name: "index_projects_users_on_user_id", using: :btree
 
   create_table "states", force: :cascade do |t|
     t.string   "name",       limit: 255
