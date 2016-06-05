@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160603173204) do
+ActiveRecord::Schema.define(version: 20160605054732) do
 
   create_table "cities", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -83,6 +83,7 @@ ActiveRecord::Schema.define(version: 20160603173204) do
     t.integer  "mentor_id",      limit: 4
     t.date     "date_beginning"
     t.float    "budget",         limit: 24
+    t.integer  "comments_count", limit: 4
   end
 
   add_index "projects", ["city_id"], name: "index_projects_on_city_id", using: :btree
