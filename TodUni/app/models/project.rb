@@ -3,9 +3,9 @@ class Project < ActiveRecord::Base
 	enum status: [:preproyecto, :en_progreso, :terminado, :cancelado]
 
 	belongs_to :mentor
+	belongs_to :city
 	has_many :stages
 	has_many :comments
-	belongs_to :city
 	has_many :participations
 	has_many :users, through: :participations
 

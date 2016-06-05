@@ -1,4 +1,4 @@
 class City < ActiveRecord::Base
-	has_many :projects
 	belongs_to :state
+	has_many :projects
 end
