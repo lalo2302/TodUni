@@ -29,8 +29,8 @@ class ProjectsController < ApplicationController
   	if @project.save
     	@user.projects << @project
   		redirect_to @project
-  	else
-  		render 'new'
+		else
+			render :new
   	end
   end
 
