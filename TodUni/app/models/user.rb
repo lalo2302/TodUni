@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   has_many :comments
   has_many :evidences
 	has_many :participations
-	has_many :projects, through: :participations
+	has_many :projects, -> { distinct }, through: :participations
 
 	validates :name, presence: true
 

@@ -7,7 +7,7 @@ class Project < ActiveRecord::Base
 	has_many :phases
 	has_many :comments
 	has_many :participations
-	has_many :users, through: :participations
+	has_many :users, -> { distinct }, through: :participations
 
 	mount_uploader :picture, PictureUploader
 	
