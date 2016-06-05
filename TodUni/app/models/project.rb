@@ -4,7 +4,7 @@ class Project < ActiveRecord::Base
 
 	belongs_to :mentor
 	belongs_to :city
-	has_many :stages
+	has_many :phases
 	has_many :comments
 	has_many :participations
 	has_many :users, through: :participations

@@ -1,4 +1,4 @@
-class Stage < ActiveRecord::Base
+class Phase < ActiveRecord::Base
 	
 	enum status: [:inactiva, :en_progreso, :finalizada]
 
