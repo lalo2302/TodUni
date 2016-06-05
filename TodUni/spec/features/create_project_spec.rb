@@ -24,11 +24,10 @@ describe "The create-a-project process" do
 	
 	context "when creates a project without name" do
 
-		it "stays in new project path" do
+		it "stays in projects path" do
 			fill_field(:description, 'Descripcion del proyecto')
-			save_and_open_page
-			#TODO: Make rspec to wait until page is loaded
-			expect(page).to have_current_path(new_project_path, :wait => 1.0)
+
+			expect(page).to have_current_path(projects_path)
 		end
 
 		it "shows a flash message" do
@@ -40,10 +39,10 @@ describe "The create-a-project process" do
 
 	context "when creates a project without description" do
 
-		it "stays in new project path" do
+		it "stays in projects path" do
 			fill_field(:name, 'Nombre del proyecto')
 
-			expect(page).to have_current_path(new_project_path)
+			expect(page).to have_current_path(projects_path)
 		end
 
 		it "shows a flash message" do
