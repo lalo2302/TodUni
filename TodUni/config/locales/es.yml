@@ -1,0 +1,11 @@
+es:
+  hello: "Hello world"
+  activerecord:
+    errors:
+      models:
+        project:
+          attributes:
+            description:
+              blank: "Tu proyecto necesita descripcion" 
+            name:
+              blank: "Tu proyecto necesita nombre" 
