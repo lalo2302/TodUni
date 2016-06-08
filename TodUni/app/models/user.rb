@@ -20,7 +20,7 @@ class User < ActiveRecord::Base
 
   def complete?
     @complete = true
-    if self.name.blank? || self.birth_date.blank?
+    if self.name.blank? || self.date_birth.blank?
       @complete = false
     end
     @complete
