@@ -10,7 +10,7 @@ FactoryGirl.define do
 		name "Example"
 		password "12345678"
 		password_confirmation "12345678"
-		birth_date Date.today - 20.years
+		date_birth Date.today - 20.years
 	end
 
 	factory :project do
