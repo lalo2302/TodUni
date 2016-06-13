@@ -25,4 +25,11 @@ class User < ActiveRecord::Base
     end
     @complete
   end
+
+	def own_project(project)
+		self.projects << project
+		participation = self.participations.where(:project => project).limit(1).first
+		participation.role = :owner
+		participation.save
+	end	
 end
