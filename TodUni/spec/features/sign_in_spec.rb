@@ -10,8 +10,8 @@ describe "The sigin process" do
 
 		#TODO: Fill_in with FactoryGirl
 		visit new_user_session_path
-		fill_in :email, :with => 'example@example.com'
-		fill_in :password, :with => '12345678'
+		fill_in :email, :with => user.email
+		fill_in :password, :with => user.password
 		
 		click_button 'Entra'	
 

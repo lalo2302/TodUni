@@ -27,7 +27,7 @@ class ProjectsController < ApplicationController
   	@project = Project.new(project_params)
     
   	if @project.save
-    	@user.projects << @project
+			@user.own_project @project
   		redirect_to @project
 		else
 			render :new
@@ -36,8 +36,7 @@ class ProjectsController < ApplicationController
 
 	def add_members
 		email = params[:email]
-		#TODO: use current_user.projects
-		project = Project.find(params[:id])
+		project = current_user.projects.find(params[:id])
 		@members = project.users
 		if User.exists?(email: email)
 			project.users << User.where(email: email)	
