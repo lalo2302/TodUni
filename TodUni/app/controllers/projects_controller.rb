@@ -28,6 +28,9 @@ class ProjectsController < ApplicationController
     
   	if @project.save
     	@user.projects << @project
+			participation = @user.participations.last
+			participation.role = :owner
+			participation.save
   		redirect_to @project
 		else
 			render :new
