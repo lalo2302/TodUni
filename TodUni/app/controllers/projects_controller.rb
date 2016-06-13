@@ -53,14 +53,4 @@ class ProjectsController < ApplicationController
     def emails
       params.require(:project).permit(:users)
     end
-
-		#TODO: Adapt this to add_members
-    def assign_members (project)
-      participants = emails.values.first.split(', ')
-      participants.each do |usr|
-        if User.exists?(email: usr)
-          project.users << User.where(email: usr)
-        end
-      end
-    end
 end
