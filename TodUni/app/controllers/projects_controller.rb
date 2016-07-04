@@ -41,7 +41,7 @@ class ProjectsController < ApplicationController
 		if User.exists?(email: email)
 			project.users << User.where(email: email)	
 		end	
-		redirect_to :back
+		redirect_to :back, :flash => {alert: "Ese usuario no existe"}
 	end
 
   private  
