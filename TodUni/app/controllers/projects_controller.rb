@@ -41,7 +41,7 @@ class ProjectsController < ApplicationController
 		if User.exists?(email: email)
 			project.users << User.where(email: email)	
 		end	
-		redirect_to :back
+		redirect_to :back, :flash => {alert: "Ese usuario no existe"}
 	end
 
   private  
@@ -52,15 +52,5 @@ class ProjectsController < ApplicationController
 
     def emails
       params.require(:project).permit(:users)
-    end
-
-		#TODO: Adapt this to add_members
-    def assign_members (project)
-      participants = emails.values.first.split(', ')
-      participants.each do |usr|
-        if User.exists?(email: usr)
-          project.users << User.where(email: usr)
-        end
-      end
     end
 end
