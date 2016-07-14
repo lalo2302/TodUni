@@ -1,15 +1,26 @@
 <%= form_for(@user, url: registration_path(@user), html: { method: :put }) do |f| %>
 
-  <div class="field">
-    <%= f.label :nombre %><br />
-    <%= f.text_field :name %>
-  </div>
+  <% if @user.name.blank? %>
+    <div class="field">
+      <%= f.label :nombre %><br />
+      <%= f.text_field :name %>
+    </div>
+  <% end %>
 
+  <% if @user.avatar.file.nil? %>
+  <div>
+    <%= f.label :Foto %><br />
+    <%= f.file_field :avatar, accept: 'image/jpeg,image/png' %>
+  </div>
+  <% end %>
+
+  <% if @user.date_birth.blank? %>
   <div>
     <%= f.label :fecha_de_nacimiento %><br />
     <% #TODO: Translation missing of months name %>
 		<%= f.date_select :date_birth, :order => [:day, :month, :year], :start_year => Date.today.year - 100, :end_year => Date.today.year %>
   </div>
+  <% end %>
 
   <div class="actions">
     <%= f.submit "Update" %>

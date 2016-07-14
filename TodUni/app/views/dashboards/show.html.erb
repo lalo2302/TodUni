@@ -1,9 +1,7 @@
 <% provide(:title, "Hola! #{@user.name}") %>
 <h1>Dashboard#Show</h1>
 <p>Email: <%= @user.email %></p>
-<p>Nombre <%= @user.name %></p>
-<%= link_to 'Editar Info', edit_user_registration_path %></p>
-<%= link_to 'Salir', destroy_user_session_path, :method => 'delete' %> <br />
+<%= render 'layouts/user_info' %>
 
 <% if @user.complete? %>
   <%= link_to 'Crear Proyecto', new_project_path %> <br />
@@ -11,6 +9,9 @@
   <p>Necesitamos que nos des un poco de informacion para que crees tu primer proyecto</p><br />
   <%= render 'layouts/complete_user' %>
 <% end %>
+
+<%= link_to 'Editar Info', edit_user_registration_path %></p>
+<%= link_to 'Salir', destroy_user_session_path, :method => 'delete' %> <br />
 
 <% if !@projects.empty? %>
   <h2>Tus proyectos</h2>

@@ -9,6 +9,8 @@ class User < ActiveRecord::Base
 	has_many :participations
 	has_many :projects, -> { distinct }, through: :participations
 
+  mount_uploader :avatar, PictureUploader
+
 	def self.types
 		%w(Mentor)
 	end

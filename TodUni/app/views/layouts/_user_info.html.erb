@@ -1,0 +1,9 @@
+<% unless @user.name.blank? %>
+  <p>Nombre: <%= @user.name %> </p>
+<% end %>
+
+<%= image_tag @user.avatar.url unless @user.avatar.file.nil? %>
+
+<% unless @user.date_birth.blank? %>
+  <p><%= @user.date_birth %></p>
+<% end %>
