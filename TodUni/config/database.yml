@@ -1,5 +1,5 @@
 development:
-  adapter: mysql
+  adapter: mysql2
   encoding: utf8
   database: dbtoduni_development
   username: root
@@ -8,7 +8,7 @@ development:
   port: 3306
 
 test:
-  adapter: mysql
+  adapter: mysql2
   encoding: utf8
   database: dbtoduni_test
   username: root
