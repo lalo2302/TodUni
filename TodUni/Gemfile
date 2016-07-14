@@ -11,7 +11,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'devise'
 gem 'devise-i18n'
-gem 'mysql'
+gem 'mysql2'
 gem 'bootstrap-sass'
 gem 'bootstrap'
 gem 'bootstrap-tagsinput-rails'
