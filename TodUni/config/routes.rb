@@ -1,11 +1,15 @@
 Rails.application.routes.draw do
-  get 'profiles/show'
+	scope '(:locale)', locale: /#{I18n.available_locales.join("|")}/ do
+
+		resources :dashboards, :only => :show
+		root "home#index"
+		devise_for :users, :controllers => { :registrations => "registrations" }
+	end
+
+	get 'profiles/show'
 	post 'projects/add_members', :to => 'projects#add_members'
-  get 'tags/:tag', :to => 'projects#index'
-  root "home#index"
-  resources :dashboards, :only => :show
+	get 'tags/:tag', :to => 'projects#index'
    #match 'dashboards/:id', :to => "dashboards#show", :as => :username, :via => :get
-  devise_for :users, :controllers => { :registrations => "registrations" }
 
   resources :tags
   resources :projects

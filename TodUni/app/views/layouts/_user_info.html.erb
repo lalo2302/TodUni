@@ -1,5 +1,5 @@
 <% unless @user.name.blank? %>
-  <p>Nombre: <%= @user.name %> </p>
+  <p><%= t ".name" %>: <%= @user.name %></p>
 <% end %>
 
 <%= image_tag @user.avatar.url unless @user.avatar.file.nil? %>

@@ -4,18 +4,18 @@
 <%= render 'layouts/user_info' %>
 
 <% if @user.complete? %>
-  <%= link_to 'Crear Proyecto', new_project_path %> <br />
+  <%= link_to t(".create_project"), new_project_path %> <br />
 <% else %>
-  <p>Necesitamos que nos des un poco de informacion para que crees tu primer proyecto</p><br />
+	<p> <%= t ".incomplete_info_warning" %> </p><br />
   <%= render 'layouts/complete_user' %>
 <% end %>
 
-<%= link_to 'Editar Info', edit_user_registration_path %></p>
-<%= link_to 'Salir', destroy_user_session_path, :method => 'delete' %> <br />
+<%= link_to t(".edit_info"), edit_user_registration_path %></p>
+<%= link_to t(".exit"), destroy_user_session_path, :method => 'delete' %> <br />
 
 <% if !@projects.empty? %>
-  <h2>Tus proyectos</h2>
+	<h2> <%= t ".your_projects" %> </h2>
   <%= render 'layouts/show_projects' %>
 <% else %>
-	<h2>No has creado ningun proyecto</h2>
+	<h2> <%= t ".no_projects_created" %> </h2>
 <% end %>
