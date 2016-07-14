@@ -2,11 +2,11 @@
 <h1>Dashboard#Show</h1>
 <p>Email: <%= @user.email %></p>
 <p><%= t ".name" %>: <%= @user.name %></p>
-<%= link_to t("dashboards.show.edit_info"), edit_user_registration_path %></p>
-<%= link_to t("dashboards.show.exit"), destroy_user_session_path, :method => 'delete' %> <br />
+<%= link_to t(".edit_info"), edit_user_registration_path %></p>
+<%= link_to t(".exit"), destroy_user_session_path, :method => 'delete' %> <br />
 
 <% if @user.complete? %>
-  <%= link_to t("dashboards.show.create_project"), new_project_path %> <br />
+  <%= link_to t(".create_project"), new_project_path %> <br />
 <% else %>
 	<p> <%= t ".incomplete_info_warning" %> </p><br />
   <%= render 'layouts/complete_user' %>
