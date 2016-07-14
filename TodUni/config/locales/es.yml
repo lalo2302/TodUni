@@ -1,5 +1,14 @@
 es:
   hello: "Hello world"
+  dashboards:
+    show:
+      name: "Nombre"
+      edit_info: "Editar información"
+      exit: "Salir"
+      create_project: "Crear nuevo proyecto"
+      incomplete_info_warning: "Favor de llenar la siguiente información antes de crear tu primer proyecto"
+      your_projects: "Tus proyectos"
+      no_projects_created: "No tienes proyectos creados"
   activerecord:
     errors:
       models:

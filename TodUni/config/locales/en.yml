@@ -21,3 +21,13 @@
 
 en:
   hello: "Hello world"
+  dashboards:
+    show:
+      name: "Name"
+      edit_info: "Edit info"
+      exit: "Exit"
+      create_project: "Create new project"
+      incomplete_info_warning: "Please fill the following info to create your first project"
+      your_projects: "Your projects"
+      no_projects_created: "You have no projects created"
+
