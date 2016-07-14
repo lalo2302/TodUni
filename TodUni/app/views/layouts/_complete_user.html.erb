@@ -7,7 +7,7 @@
 
   <div>
     <%= f.label :fecha_de_nacimiento %><br />
-    <%= f.date_select :birth_date, :order => [:day, :month, :year], :start_year => Date.today.year - 100, :end_year => Date.today.year %>
+		<%= f.date_select :date_birth, :use_month_numbers => true, :order => [:day, :month, :year], :start_year => Date.today.year - 100, :end_year => Date.today.year %>
   </div>
 
   <div class="actions">
