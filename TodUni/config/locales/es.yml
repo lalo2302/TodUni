@@ -1,5 +1,8 @@
 es:
   hello: "Hello world"
+  layouts:
+    _header:
+      language: "Language"
   dashboards:
     show:
       name: "Nombre"
