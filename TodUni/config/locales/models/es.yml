@@ -1,0 +1,48 @@
+es:
+  activerecord:
+    model:
+      city: "Ciudad"
+      comment: "Comentario"
+      evidence: "Evidencia"
+      mentor: "Mentor"
+      participation: "Participación"
+      phase: "Fase"
+      project: "Proyecto"
+      state: "Estado"
+      user: "Usuario"
+    attributes:
+      city:
+        name: "Nombre de Ciudad"
+      comment:
+        text: "Texto"
+      evidence:
+        title: "Título"
+        description: "Descripción"
+        content: "Contenido"
+        status: "Status"
+      participation:
+        role: "Rol"
+      phase:
+        phase_number: "Número de Fase"
+        description: "Descripción"
+        date_end: "Fecha Final"
+        status: "Status"
+        hours: "Horas"
+        date_beginning: "Fecha de inicio"
+      project:
+        name: "Nombre"
+        description: "Descripción"
+        coordinates: "Coordenadas"
+        date_end: "Fecha final"
+        status: "Status"
+        picture: "Imagen"
+        date_beginning: "Fecha de inicio"
+        budget: "Presupuesto"
+      state:
+        name: "Nombre de estado"
+      user:
+        email: "Email"
+        date_birth: "Fecha de nacimiento"
+        name: "Nombre completo"
+        type: "Tipo"
+        avatar: "Avatar"
