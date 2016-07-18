@@ -1,8 +1,13 @@
 en:
-  hello: "Hello world"
+  home:
+    index:
+      title: "Welcome to TodUni"
+      most_active_users: "Most active users"
+
   layouts:
-    _header:
+    header:
       language: "Language"
+
   dashboards:
     show:
       name: "Name"
@@ -13,3 +18,59 @@ en:
       your_projects: "Your projects"
       no_projects_created: "You have no projects created"
 
+  activerecord:
+    model:
+      city: "City"
+      comment: "Comment"
+      evidence: "Evidence"
+      mentor: "Mentor"
+      participation: "Participation"
+      phase: "Phase"
+      project: "Project"
+      state: "State"
+      user: "User"
+
+    attributes:
+      city:
+        name: "City Name"
+
+      comment:
+        text: "Text"
+
+      evidence:
+        title: "Title"
+        description: "Description"
+        content: "Content"
+        status: "Status"
+        
+      participation:
+        role: "Role"
+
+      phase:
+        phase_number: "Phase Number"
+        description: "Description"
+        date_end: "Ending Date"
+        status: "Status"
+        hours: "Hours"
+        date_beginning: "Beginning Date"
+
+      project:
+        name: "Name"
+        description: "Description"
+        coordinates: "Coordinates"
+        date_end: "Ending Date"
+        status: "Status"
+        picture: "Picture"
+        date_beginning: "Beginning Date"
+        budget: "Budget"
+        
+
+      state:
+        name: "State Name"
+
+      user:
+        email: "Email"
+        date_birth: "Date of Birth"
+        name: "Full Name"
+        type: "Type"
+        avatar: "Avatar"

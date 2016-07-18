@@ -1,8 +1,13 @@
 es:
-  hello: "Hello world"
+  home:
+    index:
+      title: "Bienvenido a TodUni"
+      most_active_users: "Usuarios más activos"
+
   layouts:
-    _header:
-      language: "Language"
+    header:
+      language: "Idioma"
+
   dashboards:
     show:
       name: "Nombre"
@@ -12,12 +17,69 @@ es:
       incomplete_info_warning: "Favor de llenar la siguiente información antes de crear tu primer proyecto"
       your_projects: "Tus proyectos"
       no_projects_created: "No tienes proyectos creados"
+
   activerecord:
     errors:
       models:
         project:
           attributes:
             description:
-              blank: "Tu proyecto necesita descripcion" 
+              blank: "Tu proyecto necesita descripción" 
             name:
               blank: "Tu proyecto necesita nombre" 
+
+  activerecord:
+    model:
+      city: "Ciudad"
+      comment: "Comentario"
+      evidence: "Evidencia"
+      mentor: "Mentor"
+      participation: "Participación"
+      phase: "Fase"
+      project: "Proyecto"
+      state: "Estado"
+      user: "Usuario"
+
+    attributes:
+      city:
+        name: "Nombre de Ciudad"
+
+      comment:
+        text: "Texto"
+
+      evidence:
+        title: "Título"
+        description: "Descripción"
+        content: "Contenido"
+        status: "Status"
+        
+      participation:
+        role: "Rol"
+
+      phase:
+        phase_number: "Número de Fase"
+        description: "Descripción"
+        date_end: "Fecha Final"
+        status: "Status"
+        hours: "Horas"
+        date_beginning: "Fecha de inicio"
+
+      project:
+        name: "Nombre"
+        description: "Descripción"
+        coordinates: "Coordenadas"
+        date_end: "Fecha final"
+        status: "Status"
+        picture: "Imagen"
+        date_beginning: "Fecha de inicio"
+        budget: "Presupuesto"
+        
+      state:
+        name: "Nombre de estado"
+
+      user:
+        email: "Email"
+        date_birth: "Fecha de nacimiento"
+        name: "Nombre completo"
+        type: "Tipo"
+        avatar: "Avatar"
