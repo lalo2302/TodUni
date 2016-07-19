@@ -7,7 +7,8 @@ Rails.application.routes.draw do
 	end
 
 	get 'profiles/show'
-	post 'projects/add_members', :to => 'projects#add_members'
+	post 'projects/add_members', :to => 'projects#add_members', :as => 'add_members'
+  patch 'projects/update_picture/:id', :to => 'projects#update_picture', :as => 'update_picture'
 	get 'tags/:tag', :to => 'projects#index'
    #match 'dashboards/:id', :to => "dashboards#show", :as => :username, :via => :get
 

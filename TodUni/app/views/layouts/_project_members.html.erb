@@ -1,5 +1,5 @@
 <h3>Miembros</h3>
-<%= form_tag(projects_add_members_path) do  %>
+<%= form_tag(add_members_path) do  %>
 	<div class="fields">
 		<%= text_field_tag :email%>
 	</div>
@@ -11,3 +11,11 @@
 <% @members.each do |member| %>
 	<%= link_to member.name, "#" %>
 <% end %>
+<!--<script type="text/javascript">
+	$('#project_picture').bind('change', function() {
+		var size_in_megabytes = this.files[0].size/1024/1024;
+		if (size_in_megabytes > 5) {
+			alert('El tamaño máximo de la imagen es de 5MB. Elige una imagen menos pesada.');
+		}
+	})
+</script>-->
