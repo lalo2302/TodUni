@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
 
   mount_uploader :avatar, PictureUploader
 
-  validate :picture_size
+  #validate :picture_size
 
 	def self.types
 		%w(Mentor)
