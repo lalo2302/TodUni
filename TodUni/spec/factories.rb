@@ -3,15 +3,12 @@ FactoryGirl.define do
 		email "example@example.com"
 		password "12345678"
 		password_confirmation "12345678"
-	end	
 
-	factory :user_complete, class: User do
-		email "example@example.com"
-		name "Example"
-		password "12345678"
-		password_confirmation "12345678"
-		date_birth Date.today - 20.years
-	end
+    factory :user_complete do
+      name "Example"
+      date_birth Date.today - 20.years
+    end
+	end	
 
 	factory :project do
 		sequence(:name) { |n| "TEST_PROJECT_#{n}" }

@@ -15,7 +15,7 @@ describe "The create-a-project process" do
 			visit new_project_path
 
 			fill_in :name, :with => 'Nombre de proyecto' 
-		 	fill_in :description, :with => 'Descripcion del proyecto'
+		 	fill_in :description, :with => 'Descripción del proyecto'
 			click_button "Crear proyecto"
 
 			expect(page).to have_current_path(project_path(Project.last))
