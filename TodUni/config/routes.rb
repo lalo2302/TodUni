@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 		resources :dashboards, :only => :show
 		root "home#index"
 		devise_for :users, :controllers => { :registrations => "registrations" }
+    resources :projects
 	end
 
 	get 'profiles/show'
@@ -13,7 +14,6 @@ Rails.application.routes.draw do
    #match 'dashboards/:id', :to => "dashboards#show", :as => :username, :via => :get
 
   resources :tags
-  resources :projects
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
