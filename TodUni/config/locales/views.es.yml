@@ -1,11 +1,4 @@
 es:
-  home:
-    index:
-      title: "Bienvenido a TodUni"
-      most_active_users: "Usuarios más activos"
-  layouts:
-    header:
-      language: "Idioma"
   dashboards:
     show:
       name: "Nombre"
@@ -15,3 +8,12 @@ es:
       incomplete_info_warning: "Favor de llenar la siguiente información antes de crear tu primer proyecto"
       your_projects: "Tus proyectos"
       no_projects_created: "No tienes proyectos creados"
+  layouts:
+    header:
+      language: "Idioma"
+      login: "Ingresa"
+      signup: "Regístrate"
+  home:
+    index:
+      title: "Bienvenidos a Toduni"
+      most_active_users: "Usuarios más activos"

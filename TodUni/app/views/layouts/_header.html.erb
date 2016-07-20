@@ -7,8 +7,8 @@
         <li><%= link_to "Dashboard",   dashboard_path(@user) %></li>
         <li><%= link_to "Salir",   destroy_user_session_path, :method => :delete %></li>
       <% else %>
-        <li><%= link_to "Registrate",   new_user_registration_path %></li>
-        <li><%= link_to "Ingresa",   new_user_session_path %></li>
+        <li><%= link_to I18n.t "layouts.header.signup",   new_user_registration_path %></li>
+        <li><%= link_to I18n.t "layouts.header.login",   new_user_session_path %></li>
       <% end %>
       </ul>
 			<ul class="nav navbar-nav navbar-right">
@@ -16,7 +16,7 @@
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <%= t ".language" %> <span class="caret"></span></a>
 					<ul class="dropdown-menu">
 						<li><%= link_to "English", locale: "en" %></li>
-						<li><%= link_to "Espanol", locale: "es" %></li>
+						<li><%= link_to "Español", locale: "es" %></li>
 					</ul>
 			</ul>
     </nav>
