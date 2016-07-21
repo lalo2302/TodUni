@@ -18,6 +18,24 @@ class Project < ActiveRecord::Base
   def owner
     self.participations.where(role: 2).first.user
   end
+
+  def owner?(user)
+    if self.owner == user
+      true
+    else
+      false
+    end
+  end
+
+  def members
+    members = []
+    participations = self.participations.where(role: 0)
+    participations.each do |part|
+      members << part.user
+    end
+    return members
+  end
+    
 	private
 		# Validates the size of an uploaded picture.
 		def picture_size
