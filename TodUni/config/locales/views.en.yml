@@ -13,6 +13,7 @@ en:
       language: "Language"
       login: "Log In"
       signup: "Sign Up"
+      logout: "Log out"
   home:
     index:
       title: "Welcome to toduni"

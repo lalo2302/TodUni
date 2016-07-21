@@ -9,10 +9,11 @@ es:
       your_projects: "Tus proyectos"
       no_projects_created: "No tienes proyectos creados"
   layouts:
-    header:
+    _header:
       language: "Idioma"
       login: "Ingresa"
       signup: "Regístrate"
+      logout: "Cerrar Sesión"
   home:
     index:
       title: "Bienvenidos a Toduni"
