@@ -29,13 +29,13 @@ end
 
 group :test do
 	gem 'capybara', '2.6.2'
-	gem 'factory_girl_rails', '~> 4.0'
 end
 
 group :test, :development do
   gem "rspec-rails", "3.4.2"
   gem "launchy"
   gem 'byebug'
+	gem 'factory_girl_rails', '~> 4.0'
 end
 
 

@@ -8,12 +8,6 @@
 			<%= f.label :Nombre %>
 			<%= f.text_field :name, id: :name, class: 'form-control' %>
 
-			<!--
-			<% #TODO: Pass this to second registration %>
-			<%= f.label :Imagen %>
-			<%= f.file_field :picture, accetp: 'image/jpeg,image/gif,image/png' %>
-			-->
-			
 			<%= f.label :Descripción %>
 			<%= f.text_area :description, id: :description, class: 'form-control' %>
 			
@@ -26,13 +20,3 @@
 		<% end %>
 	</div>
 </div>
-
-
-<script type="text/javascript">
-	$('#project_picture').bind('change', function() {
-		var size_in_megabytes = this.files[0].size/1024/1024;
-		if (size_in_megabytes > 5) {
-			alert('El tamaño máximo de la imagen es de 5MB. Elige una imagen menos pesada.');
-		}
-	})
-</script>

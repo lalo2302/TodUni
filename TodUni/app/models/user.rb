@@ -11,6 +11,8 @@ class User < ActiveRecord::Base
 
   mount_uploader :avatar, PictureUploader
 
+  #validate :picture_size
+
 	def self.types
 		%w(Mentor)
 	end
@@ -32,4 +34,30 @@ class User < ActiveRecord::Base
 		participation.role = :owner
 		participation.save
 	end	
+
+  def is_owner?(project)
+    projects = self.owned_projects
+    if projects.include? project 
+      return true
+    else
+      return false
+    end
+  end
+
+  def owned_projects
+    projects = []
+    participations = self.participations.where(role: 2)
+    participations.each do |part|
+      projects << part.project
+    end
+    return projects
+  end
+
+	private
+		# Validates the size of an uploaded picture.
+		def picture_size
+			if picture.size > 5.megabytes
+				errors.add(:picture, "should be less than 5MB")
+			end
+    end
 end

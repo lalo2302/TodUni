@@ -1,0 +1,11 @@
+<% if @project.picture.file.nil? %>
+  <%= form_for(@project, url: update_picture_path(@project)) do |f| %>
+    <%= f.label :Foto %>
+    <%= f.file_field :picture, accept: 'image/jpeg, image/png' %> 
+    <div class ="actions">
+      <%= f.submit "Subir foto" %>
+    </div>
+  <% end %>
+<% else %>
+  <%= image_tag @project.picture, :class => "cover_picture" %>
+<% end %>

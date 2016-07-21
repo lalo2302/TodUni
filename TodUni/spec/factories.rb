@@ -1,26 +1,8 @@
 FactoryGirl.define do
-	factory :user do
-		email "example@example.com"
-		password "12345678"
-		password_confirmation "12345678"
-	end	
-
-	factory :user_complete, class: User do
-		email "example@example.com"
-		name "Example"
-		password "12345678"
-		password_confirmation "12345678"
-		date_birth Date.today - 20.years
-	end
-
 	factory :project do
 		sequence(:name) { |n| "TEST_PROJECT_#{n}" }
 		description "This project is a test"
-		association user_complete
-
-		factory :pre_project do
-			status 0
-		end
+    status 0
 
 		factory :approved_project do
 			status 1
@@ -33,5 +15,24 @@ FactoryGirl.define do
 		factory :canceled_project do
 			status 3
 		end
-	end
+  end
+
+	factory :user do
+		sequence(:email) { |n| "example#{n}@example.com" }
+		password "12345678"
+		password_confirmation "12345678"
+
+    factory :user_complete do
+      name "Example"
+      date_birth Date.today - 20.years
+
+      factory :user_with_project do
+        after(:create) do |user|
+          project = FactoryGirl.create(:project)
+          #TODO: Write test for own_project method
+          user.own_project project
+        end
+      end
+    end
+	end	
 end
