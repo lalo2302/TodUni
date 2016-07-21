@@ -13,7 +13,8 @@ class ProjectsController < ApplicationController
 	def show
     @user = current_user
 		@project = Project.find(params[:id])
-		@members = @project.users
+    @members = @project.members
+    @owner = @project.owner
 	end
 
   def new
