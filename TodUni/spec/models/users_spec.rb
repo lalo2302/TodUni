@@ -8,13 +8,6 @@ RSpec.describe User, :type => :model do
 
 	describe "Validations" do
 			
-		it "requires a name" do
-			user = User.new(name:"")
-
-			user.valid? # populates the errors
-			expect(user.errors[:name].any?).to eq(true)
-		end
-
 		it "requires an email" do
 			user = User.new(email:"")
 
