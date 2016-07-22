@@ -15,17 +15,17 @@ class ApplicationController < ActionController::Base
 	private
 
 		def set_i18n_locale_from_params
-			valid_locales = ['en', 'es']
-
-			if user_signed_in? && valid_locales.include?(current_user.locale)
+			if user_signed_in? && I18n.available_locales.map(&:to_s).include?(current_user.locale)
 				I18n.locale = current_user.locale
 			elsif params[:locale]
 				if I18n.available_locales.map(&:to_s).include?(params[:locale])
 					I18n.locale = params[:locale]
-				else
-					flash.now[:notice] = "#{params[:locale]} translation not available"
-					logger.error flash.now[:notice]
-				end
+			 	else
+			 		flash.now[:notice] = "#{params[:locale]} translation not available"
+			 		logger.error flash.now[:notice]
+			 	end
+			else
+				I18n.locale = http_accept_language.compatible_language_from(I18n.available_locales)
 			end
 		end
 
