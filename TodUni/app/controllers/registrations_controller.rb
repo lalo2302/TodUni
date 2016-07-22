@@ -1,6 +1,12 @@
 class RegistrationsController < Devise::RegistrationsController
   before_filter :configure_permitted_parameters, :only => [:create, :update]
 
+		def create
+			super do |resource|
+				resource.locale = I18n.locale
+			end
+		end
+
 protected
     def configure_permitted_parameters
       devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:email, :password) }
