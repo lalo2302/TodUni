@@ -29,7 +29,6 @@ FactoryGirl.define do
       factory :user_with_project do
         after(:create) do |user|
           project = FactoryGirl.create(:project)
-          #TODO: Write test for own_project method
           user.own_project project
         end
       end
