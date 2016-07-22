@@ -1,9 +1,5 @@
 require 'rails_helper'
 describe "The sigin process" do
-	#before :each do
-	#	user = FactoryGirl.create(:user)
-	#	user.save
-	#end
 
 	it "signs in" do
 		user = FactoryGirl.create(:user_complete)
