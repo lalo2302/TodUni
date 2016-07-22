@@ -207,6 +207,7 @@ GEM
     formatador (0.2.5)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
+    http_accept_language (2.0.5)
     i18n (0.7.0)
     i18n-active_record (0.1.0)
       i18n (>= 0.5.0)
@@ -345,6 +346,7 @@ DEPENDENCIES
   devise-i18n
   factory_girl_rails (~> 4.0)
   fog
+  http_accept_language
   i18n-active_record
   jbuilder (~> 2.0)
   jquery-rails
