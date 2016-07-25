@@ -1,6 +1,7 @@
 class RegistrationsController < Devise::RegistrationsController
   before_filter :configure_permitted_parameters, :only => [:create, :update]
 
+		# POST /users/sign_up
 		def create
 			super do |resource|
 				resource.locale = I18n.locale
@@ -8,9 +9,10 @@ class RegistrationsController < Devise::RegistrationsController
 		end
 
 protected
+
     def configure_permitted_parameters
       devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:email, :password) }
-      devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:password, :password_confirmation, :current_password, :name, :birth_date, :avatar) }
+      devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:password, :password_confirmation, :current_password, :name, :birth_date, :avatar, :locale) }
     end
 
     def update_resource(resource, params)
