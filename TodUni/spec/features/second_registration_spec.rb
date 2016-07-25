@@ -1,36 +1,37 @@
-require 'rails/helper'
+require 'rails_helper'
 describe "The second registration process" do
   let(:user) { FactoryGirl.create :user_complete }
   let(:project) { FactoryGirl.create :project }
   
   def go_to_project
     login_as(user)
+    user.own_project project
     visit project_path(project)
   end
 
   context "uploading a picture" do
     it "upload a valid image" do
       go_to_project
-      attach_file Rails.root.join('spec/support/valid_image.jpg')
+      attach_file "project_picture", Rails.root.join('spec/support/valid_image.jpg')
       click_button "Agregar imagen"
 
-      expect(page).to have_selector(:img)
+      expect(page).to have_xpath('//img')
     end 
 
     it "not upload an invalid image" do
       go_to_project
-      attach_file Rails.root.join('spec/support/invalid_image.gif')
+      attach_file "project_picture", Rails.root.join('spec/support/invalid_image.jpg')
       click_button "Agregar imagen"
 
-      expect(page).not_to have_selector(:img)
+      expect(page).not_to have_xpath('//img')
     end
 
-    it "shows flash message for invalid image" do
+    it "shows flash message for invalid image of > 6mb" do
       go_to_project
-      attach_file Rails.root.join('spec/support/invalid_image.jpg')
+      attach_file "project_picture", Rails.root.join('spec/support/invalid_image.jpg')
       click_button "Agregar imagen"
 
-      expect(page).to have_content('Lo siento, intenta con otra imagen')
+      expect(page).to have_content('Lo siento, vuélvelo a intentar o sube otra imagen')
     end
 
     it "uploading nothing" do
@@ -38,7 +39,7 @@ describe "The second registration process" do
       
       click_button "Agregar imagen"
 
-      expect(page).to have_content('No seleccionaste ninguna imagen')
+      expect(page).to have_content('Lo siento, vuélvelo a intentar o sube otra imagen')
     end
   end
 

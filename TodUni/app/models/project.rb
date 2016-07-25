@@ -13,7 +13,6 @@ class Project < ActiveRecord::Base
 	
 	validates :name, presence: true
 	validates :description, presence: true
-	#validate :picture_size
 
   def owner
     self.participations.where(role: 2).first.user
@@ -35,12 +34,4 @@ class Project < ActiveRecord::Base
     end
     return members
   end
-    
-	private
-		# Validates the size of an uploaded picture.
-		def picture_size
-			if picture.size > 5.megabytes
-				errors.add(:picture, "should be less than 5MB")
-			end
-		end
 end
