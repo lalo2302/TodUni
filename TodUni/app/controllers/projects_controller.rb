@@ -36,8 +36,7 @@ class ProjectsController < ApplicationController
   end
 
   def update_picture
-    #FIX: When click the button without selecting an image
-    #     it fails
+    #TODO: Refactor
     @project = Project.find(params[:id])
     picture = params[:project][:picture] if params[:project].present?
     if !picture.blank? and picture.size < 5.megabytes and @project.update_attributes(picture_params)
