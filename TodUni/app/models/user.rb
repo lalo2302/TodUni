@@ -4,6 +4,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+	enum locale: [:en, :es]
+
   has_many :comments
   has_many :evidences
 	has_many :participations
@@ -18,7 +20,6 @@ class User < ActiveRecord::Base
 	end
 
 	scope :mentors, -> { where(type: 'Mentor') }  
-
 
   def complete?
     @complete = true
