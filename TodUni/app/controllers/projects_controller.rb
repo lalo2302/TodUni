@@ -19,7 +19,7 @@ class ProjectsController < ApplicationController
 
   def new
     @user = current_user
-    redirect_to dashboard_path(@user), :flash => {notice: "Necesitas completar tu informacion"} unless @user.complete?
+    redirect_to dashboard_path(@user), :flash => {notice: "Necesitas completar tu información"} unless @user.complete?
   	@project = Project.new
   end
 
@@ -39,10 +39,11 @@ class ProjectsController < ApplicationController
     #FIX: When click the button without selecting an image
     #     it fails
     @project = Project.find(params[:id])
-    if @project.update_attributes(picture_params)
+    picture = params[:project][:picture] if params[:project].present?
+    if !picture.blank? and picture.size < 5.megabytes and @project.update_attributes(picture_params)
       redirect_to :back, :flash => {notice: "Foto actualizada"}
     else
-      redirect_to :back, :flash => {notice: "No se pudo actualizar tu foto"}
+      redirect_to :back, :flash => {notice: "Lo siento, vuélvelo a intentar o sube otra imagen"}
     end
   end
 
