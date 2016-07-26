@@ -23,7 +23,7 @@ class User < ActiveRecord::Base
 
   def complete?
     @complete = true
-    if self.name.blank? || self.date_birth.blank?
+    if self.name.blank? || self.date_birth.blank? || self.avatar.file.nil?
       @complete = false
     end
     @complete
