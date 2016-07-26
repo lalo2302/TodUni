@@ -5,12 +5,12 @@ Rails.application.routes.draw do
 			resources :translations, constraints: { :id => /[^\/]+/ }
 		end
 		resources :dashboards, :only => :show
+    resources :profiles, :only => :show
 		root "home#index"
 		devise_for :users, :controllers => { :registrations => "registrations" }
     resources :projects
 	end
 
-	get 'profiles/show'
 	post 'projects/add_members', :to => 'projects#add_members', :as => 'add_members'
   patch 'projects/update_picture/:id', :to => 'projects#update_picture', :as => 'update_picture'
 	get 'tags/:tag', :to => 'projects#index'

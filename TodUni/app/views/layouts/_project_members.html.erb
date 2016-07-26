@@ -14,7 +14,7 @@
     <li class="owner"><%= link_to @owner.name, @owner_path %>
   <% @members.each do |member| %>
     <% #TODO: link_to profile_path(member) %>
-    <li class="member"><%= link_to member.name, '#' %></li>
+    <li class="member"><%= link_to member.name, profile_path(member) %></li>
   <% end %>
   </ul>
 </div>
