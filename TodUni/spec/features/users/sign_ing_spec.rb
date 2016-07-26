@@ -1,5 +1,5 @@
 require 'rails_helper'
-describe "The sigin process" do
+describe "The sign in process" do
 
 	it "signs in" do
 		user = FactoryGirl.create(:user_complete)
