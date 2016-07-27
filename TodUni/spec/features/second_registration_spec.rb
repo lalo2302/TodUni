@@ -48,7 +48,7 @@ describe "The second registration process" do
       go_to_project
 
       within(:xpath, '//div[@id="tags"]') do
-        fill_in :tag_list, :with => "tag_example"
+        fill_in 'project[tag_list]', :with => "tag_example"
         click_button "Agregar tags"
       end
 
@@ -60,7 +60,7 @@ describe "The second registration process" do
       tags = "tag1, tag2, tag3, tag4, tag5"
 
       within(:xpath, '//div[@id="tags"]') do
-        fill_in :tag_list, :with => tags
+        fill_in 'project[tag_list]', :with => tags
         click_button "Agregar tags"
       end
 
