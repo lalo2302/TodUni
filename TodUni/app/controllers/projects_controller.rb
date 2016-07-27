@@ -15,6 +15,7 @@ class ProjectsController < ApplicationController
 		@project = Project.find(params[:id])
     @members = @project.members
     @owner = @project.owner
+    @tags = @project.tag_list
 	end
 
   def new
@@ -62,7 +63,7 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
     tags = params[:project][:tag_list] if params[:project].present?
     if tags.present?
-      @project.tag_list.add(tags)
+      @project.tag_list.add(tags, parse: true)
       @project.save
       redirect_to :back
     else
