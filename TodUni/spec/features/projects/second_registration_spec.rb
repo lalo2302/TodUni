@@ -43,20 +43,38 @@ describe "The second registration process" do
     end
   end
 
-  context "Adding a hashtag" do
-    it "adds 1 hashtag" do
+  context "Adding a tag" do
+    it "adds 1 tag" do
+      go_to_project
+
+      within(:xpath, '//div[@id="tags"]') do
+        fill_in 'project[tag_list]', :with => "tag_example"
+        click_button "Agregar tags"
+      end
+
+      expect(page).to have_css('li.tag', :count => 1)
     end
 
-    it "adds 5 hashtags" do
+    it "adds 5 tags" do
+      go_to_project
+      tags = "tag1, tag2, tag3, tag4, tag5"
+
+      within(:xpath, '//div[@id="tags"]') do
+        fill_in 'project[tag_list]', :with => tags
+        click_button "Agregar tags"
+      end
+
+      expect(page).to have_css("li.tag", :count => 5)
     end
 
     it "adds no hashtag" do
-    end
+      go_to_project
 
-    it "adds existing hashtag" do
-    end
+      within(:xpath, '//div[@id="tags"]') do
+        click_button "Agregar tags"
+      end
 
-    it "adds new hashtag" do
+      expect(page).not_to have_css("li.tag") 
     end
   end
 end

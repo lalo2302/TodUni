@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
 	scope '(:locale)', locale: /#{I18n.available_locales.join("|")}/ do
 		resources :dashboards, :only => :show
+    resources :profiles, :only => :show
 		root "home#index"
 		devise_for :users, :controllers => { :registrations => "registrations" }
     resources :projects
@@ -11,8 +12,8 @@ Rails.application.routes.draw do
 		resources :translations, constraints: { :id => /[^\/]+/ }
 	end
 
-	get 'profiles/show'
 	post 'projects/add_members', :to => 'projects#add_members', :as => 'add_members'
+  patch 'projects/add_tags/:id', :to => 'projects#add_tags', :as => 'add_tags'
   patch 'projects/update_picture/:id', :to => 'projects#update_picture', :as => 'update_picture'
 	get 'tags/:tag', :to => 'projects#index'
   #match 'dashboards/:id', :to => "dashboards#show", :as => :username, :via => :get
