@@ -1,11 +1,22 @@
 Rails.application.routes.draw do
 
 	scope '(:locale)', locale: /#{I18n.available_locales.join("|")}/ do
+
+		root "home#index"
+
 		resources :dashboards, :only => :show
     resources :profiles, :only => :show
-		root "home#index"
+
 		devise_for :users, :controllers => { :registrations => "registrations" }
-    resources :projects
+
+    resources :projects do
+			resources :comments
+		end
+
+		resources :comments do
+			resources :comments
+		end
+
 	end
 
 	resources :locales do
