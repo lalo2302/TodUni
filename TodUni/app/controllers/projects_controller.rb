@@ -36,7 +36,6 @@ class ProjectsController < ApplicationController
   	end
   end
 
-	#TODO: rename globally to upload_picture
   def update_picture
     #TODO: Refactor
     @project = Project.find(params[:id])
@@ -84,9 +83,5 @@ class ProjectsController < ApplicationController
 
     def picture_params
       params.fetch(:project, {}).permit(:picture)
-    end
-
-    def emails
-      params.require(:project).permit(:users)
     end
 end
