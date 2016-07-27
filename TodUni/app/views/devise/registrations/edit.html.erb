@@ -14,8 +14,9 @@
   </div>
 
 	<div>
+		<%= #TODO: order alphabetically %>
 		<%= f.label :locale %><br />
-		<%= f.select :locale, User.locales.keys.map {|locale| [locale.titleize,locale]} %>
+		<%= f.select :locale, User.locales.keys.map {|locale| [locale_name(locale), locale]} %>
 	</div>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
