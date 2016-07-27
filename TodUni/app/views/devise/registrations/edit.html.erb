@@ -41,4 +41,4 @@
 
 <p>No estas feliz? <%= button_to "Cancelar mi cuenta", registration_path(resource_name), data: { confirm: "Seguro?" }, method: :delete %></p>
 
-<%= link_to "Atras", :back %>
+<%= link_to "Atras", dashboard_path(resource) %>
