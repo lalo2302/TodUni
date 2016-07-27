@@ -36,6 +36,7 @@ class ProjectsController < ApplicationController
   	end
   end
 
+	#TODO: rename globally to upload_picture
   def update_picture
     #TODO: Refactor
     @project = Project.find(params[:id])
@@ -47,6 +48,10 @@ class ProjectsController < ApplicationController
     end
   end
 
+	#TODO: update_picture
+	
+	#TODO: delete_picture
+	
 	def add_members
 		email = params[:email]
 		project = current_user.projects.find(params[:id])
