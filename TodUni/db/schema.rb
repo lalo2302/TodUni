@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160716203641) do
+ActiveRecord::Schema.define(version: 20160726161221) do
 
   create_table "cities", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -137,11 +137,12 @@ ActiveRecord::Schema.define(version: 20160716203641) do
     t.string   "last_sign_in_ip",        limit: 255
     t.datetime "created_at",                                      null: false
     t.datetime "updated_at",                                      null: false
-    t.datetime "date_birth"
+    t.date     "date_birth"
     t.string   "name",                   limit: 255
     t.integer  "status",                 limit: 4
     t.string   "type",                   limit: 255
     t.string   "avatar",                 limit: 255
+    t.integer  "locale",                 limit: 4
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
