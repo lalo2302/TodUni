@@ -26,12 +26,14 @@ describe "The create-a-project process" do
 
 		it "stays in projects path" do
 			fill_field(:description, 'Descripcion del proyecto')
+			click_button "Crear proyecto"
 
 			expect(page).to have_current_path(projects_path)
 		end
 
 		it "shows a flash message" do
 			fill_field(:description, 'Descripcion del proyecto')
+			click_button "Crear proyecto"
 
 			expect(page).to have_content('Tu proyecto necesita nombre')
 		end
@@ -41,14 +43,17 @@ describe "The create-a-project process" do
 
 		it "stays in projects path" do
 			fill_field(:name, 'Nombre del proyecto')
+			click_button "Crear proyecto"
 
 			expect(page).to have_current_path(projects_path)
 		end
 
 		it "shows a flash message" do
 			fill_field(:name, 'Nombre del proyecto')
+			click_button "Crear proyecto"
 			
-			expect(page).to have_content('Tu proyecto necesita descripcion')
+			expect(page).to have_content('Tu proyecto necesita descripción')
+
 		end
 	end
 end

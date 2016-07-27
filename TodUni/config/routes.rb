@@ -1,14 +1,15 @@
 Rails.application.routes.draw do
 
 	scope '(:locale)', locale: /#{I18n.available_locales.join("|")}/ do
-		resources :locales do
-			resources :translations, constraints: { :id => /[^\/]+/ }
-		end
 		resources :dashboards, :only => :show
     resources :profiles, :only => :show
 		root "home#index"
 		devise_for :users, :controllers => { :registrations => "registrations" }
     resources :projects
+	end
+
+	resources :locales do
+		resources :translations, constraints: { :id => /[^\/]+/ }
 	end
 
 	post 'projects/add_members', :to => 'projects#add_members', :as => 'add_members'

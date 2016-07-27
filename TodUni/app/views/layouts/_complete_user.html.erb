@@ -17,12 +17,11 @@
   <% if @user.date_birth.blank? %>
   <div>
     <%= f.label :fecha_de_nacimiento %><br />
-    <% #TODO: Translation missing of months name %>
-		<%= f.date_select :date_birth, :order => [:day, :month, :year], :start_year => Date.today.year - 100, :end_year => Date.today.year %>
+		<%= f.date_select :date_birth, :order => [:day, :month, :year], :start_year => Date.today.year - 100, :end_year => Date.today.year, :use_month_names => I18n.t(:month_names, :scope => :date) %>
   </div>
   <% end %>
 
   <div class="actions">
-    <%= f.submit "Update" %>
+    <%= f.submit t("update") %>
   </div>
 <% end %>
