@@ -8,5 +8,9 @@
       <%= f.submit "Agregar tags" %>
     </div>
   <% end %>
+  <ul>
+    <% @tags.each do |tag| %>
+      <li class="tag"><%= tag %></li>
+    <% end %>
 </div>
 

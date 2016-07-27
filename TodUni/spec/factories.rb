@@ -25,6 +25,9 @@ FactoryGirl.define do
     factory :user_complete do
       name "Example"
       date_birth Date.today - 20.years
+      after :create do |user|
+        user.update_column(:avatar, 'spec/support/valid_image.jpg')
+      end
 
       factory :user_with_project do
         after(:create) do |user|
