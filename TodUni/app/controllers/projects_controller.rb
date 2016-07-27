@@ -67,6 +67,7 @@ class ProjectsController < ApplicationController
       redirect_to :back
     else
       redirect_to :back, :flash => {alert: "Algo salio mal"}
+    end
   end
 
   private  
