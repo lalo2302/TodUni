@@ -7,6 +7,7 @@ class RegistrationsController < Devise::RegistrationsController
 				resource.locale = I18n.locale
 			end
 		end
+    
 
 protected
 
