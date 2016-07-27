@@ -12,6 +12,7 @@ Rails.application.routes.draw do
 	end
 
 	post 'projects/add_members', :to => 'projects#add_members', :as => 'add_members'
+  patch 'projects/add_tags/:id', :to => 'projects#add_tags', :as => 'add_tags'
   patch 'projects/update_picture/:id', :to => 'projects#update_picture', :as => 'update_picture'
 	get 'tags/:tag', :to => 'projects#index'
   #match 'dashboards/:id', :to => "dashboards#show", :as => :username, :via => :get

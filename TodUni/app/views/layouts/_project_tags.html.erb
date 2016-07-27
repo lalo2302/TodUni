@@ -1,0 +1,12 @@
+<h3>Tags</h3>
+<div id="tags">
+  <%= form_for(@project, url: add_tags_path(@project)) do |f| %>
+    <div class="fields">
+      <%= f.text_field :tag_list %>
+    </div>
+    <div class="actions">
+      <%= f.submit "Agregar tags" %>
+    </div>
+  <% end %>
+</div>
+

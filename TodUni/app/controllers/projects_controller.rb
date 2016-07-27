@@ -58,6 +58,17 @@ class ProjectsController < ApplicationController
     end
 	end
 
+  def add_tags
+    @project = Project.find(params[:id])
+    tags = params[:project][:tag_list] if params[:project].present?
+    if tags.present?
+      @project.tag_list.add(tags)
+      @project.save
+      redirect_to :back
+    else
+      redirect_to :back, :flash => {alert: "Algo salio mal"}
+  end
+
   private  
 
   	def project_params
