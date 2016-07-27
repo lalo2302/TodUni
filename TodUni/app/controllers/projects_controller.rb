@@ -53,7 +53,7 @@ class ProjectsController < ApplicationController
 	#TODO: delete_picture
 	
 	def add_members
-		email = params[:email]
+		email = params[:project][:email] if params[:project].present?
 		project = current_user.projects.find(params[:id])
 		@members = project.users
 		if User.exists?(email: email)
