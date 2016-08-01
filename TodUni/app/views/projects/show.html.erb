@@ -18,9 +18,11 @@
 <div>
 	<h3> Comments </h3>
 
-	<%= form_for [@project, Comment.new] do |f| %>
-		<%= f.text_area :body, placeholder: "Add a comment" %>
-		<%= f.submit "Add comment" %>
+	<% if user_signed_in? %>
+		<%= form_for [@project, Comment.new] do |f| %>
+			<%= f.text_area :body, placeholder: "Add a comment" %>
+			<%= f.submit "Add comment" %>
+		<% end %>
 	<% end %>
 
 	<ul>
