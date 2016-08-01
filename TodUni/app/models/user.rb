@@ -2,7 +2,8 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable, :validatable,
+         :omniauthable, :omniauth_providers => [:facebook]
 
 	enum locale: [:en, :es]
 
@@ -52,6 +53,19 @@ class User < ActiveRecord::Base
       projects << part.project
     end
     return projects
+  end
+
+  def self.from_omniauth(auth)
+    where(email: auth.info.email, provider: auth.provider, uid: auth.uid).first_or_create do |user|
+      user.provider = auth.provider
+      user.uid = auth.uid
+      user.email = auth.info.email
+      user.name = auth.info.name
+      user.remote_avatar_url = auth.info.image.gsub('http://','https://')
+      #TODO: Get date of birth from facebook
+      user.password = Devise.friendly_token[0,20]
+      fail
+    end
   end
 
 	private
