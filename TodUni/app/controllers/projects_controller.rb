@@ -1,5 +1,6 @@
 class ProjectsController < ApplicationController
-  before_filter :authenticate_user!, except: [ :index ]
+  before_filter :authenticate_user!, except: [ :index, :show ]
+  #TODO: Check lalo's notes for projects profiles
 
   def index
     @user = current_user

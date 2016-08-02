@@ -35,4 +35,15 @@ class Project < ActiveRecord::Base
     end
     return members
   end
+
+  def member?(user)
+    participants = []
+    participations = self.participations
+    participations.each do |part|
+      if user == part.user
+        return true
+      end
+    end
+    return false
+  end
 end
