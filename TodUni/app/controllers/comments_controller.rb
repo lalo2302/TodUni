@@ -6,7 +6,9 @@ class CommentsController < ApplicationController
 	end
 
 	def create
+		@user = current_user
 		@comment = @parent.comments.new comment_params
+		@comment.user = @user
 
 		if @comment.save
 			redirect_to :back, notice: "Comment successfully posted"
@@ -18,7 +20,7 @@ class CommentsController < ApplicationController
 	private
 
 	def comment_params
-		params.require(:comment).permit(:body, :user_id)
+		params.require(:comment).permit(:body)
 	end
 
 	def find_parent
