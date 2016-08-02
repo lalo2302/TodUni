@@ -5,7 +5,7 @@ class Project < ActiveRecord::Base
 	belongs_to :mentor
 	belongs_to :city
 	has_many :phases
-	has_many :comments, as: :parent
+	has_many :comments, as: :parent, dependent: :delete_all
 	has_many :participations
 	has_many :users, -> { distinct }, through: :participations
 
