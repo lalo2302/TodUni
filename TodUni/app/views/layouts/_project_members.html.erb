@@ -1,12 +1,13 @@
 <h3>Miembros</h3>
-<% #FIX: hidden id field in members %>
-<%= form_for(@project, url:add_members_path(@project)) do |f|  %>
-	<div class="fields">
-		<%= f.text_field :email %>
-	</div>
-	<div class="actions">
-		<%= f.submit "Agregar" %>
-	</div>
+<% if @project.owner? @user %>
+  <%= form_for(@project, url:add_members_path(@project)) do |f|  %>
+    <div class="fields">
+      <%= f.text_field :email %>
+    </div>
+    <div class="actions">
+      <%= f.submit "Agregar" %>
+    </div>
+  <% end %>
 <% end %>
 <div class="members">
   <ul>
