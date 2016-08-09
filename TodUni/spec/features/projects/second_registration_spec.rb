@@ -1,11 +1,10 @@
 require 'rails_helper'
 describe "The second registration process" do
-  let(:user) { FactoryGirl.create :user_complete }
-  let(:project) { FactoryGirl.create :project }
+  let(:user) { FactoryGirl.create :user_with_project }
+  let(:project) { user.projects.first }
   
   def go_to_project
     login_as(user)
-    user.own_project project
     visit project_path(project)
   end
 

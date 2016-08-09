@@ -4,7 +4,7 @@ describe "Members features" do
 
   def go_to_project
     login_as(user)
-    visit project_path(user.projects[0])
+    visit project_path(user.projects.first)
   end
 
   context "when visits the project 1st time" do
