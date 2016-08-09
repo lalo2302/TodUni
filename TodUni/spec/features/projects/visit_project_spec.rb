@@ -17,7 +17,7 @@ describe "Visiting another user project process" do
     end 
   end
 
-  context "when asks to be a member of the project" do
+  context "when asks to be a project's member" do
     it "can ask 1 time" do
     end
 

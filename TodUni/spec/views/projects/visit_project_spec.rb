@@ -1,5 +1,5 @@
 require 'rails_helper'
-describe "Visiting another user project process" do
+describe "Visiting another user's project process" do
   let(:owner) { FactoryGirl.create :user_with_project }
   let(:project) { owner.projects.first }
   let(:user) { FactoryGirl.create :user }
@@ -10,10 +10,10 @@ describe "Visiting another user project process" do
   end
 
   context "when visits an empty incomplete project" do
-    it "shows the project name" do
+    it "shows the project's name" do
     end
 
-    it "shows the project description" do
+    it "shows the project's description" do
     end
 
     it "shows a default image" do
@@ -24,34 +24,34 @@ describe "Visiting another user project process" do
   end
 
   context "when visits an approved project without progress" do
-    it "shows the project name" do
+    it "shows the project's name" do
     end
 
-    it "shows the project description" do
+    it "shows the project's description" do
     end
 
-    it "shows the project image" do
+    it "shows the project's image" do
     end
 
-    it "shows the project members" do
+    it "shows the project's members" do
     end
 
-    it "shows the project owner" do
+    it "shows the project's owner" do
     end
 
-    it "shows the project tags" do
+    it "shows the project's tags" do
     end
 
-    it "shows the project analisis" do
+    it "shows the project's analisis" do
     end
 
-    it "shows the project design" do
+    it "shows the project's design" do
     end 
 
-    it "shows the project start date" do
+    it "shows the project's start date" do
     end
 
-    it "shows the project end date" do
+    it "shows the project's end date" do
     end
   end
 end
