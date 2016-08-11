@@ -1,4 +1,5 @@
 <li>
+	<%= image_tag comment.user.avatar.url, :class => "img_commenter" unless comment.user.avatar.file.nil? %>
   <%= comment.body %> -
 	<small>Submitted <%= time_ago_in_words(comment.created_at) %> ago - by <%= comment.user.name %></small>
 
@@ -10,8 +11,8 @@
 	<% #TODO: Display comment's count %>
 	<% if user_signed_in? %>
 		<%= form_for [comment, Comment.new] do |f| %>
-      <%= f.text_area :body, placeholder: "Add a Reply" %><br/>
-      <%= f.submit "Reply"  %>
+			<%= f.text_area :body, placeholder: "Add a Reply", :class => "reply_box" %><br/>
+			<%= f.submit "Reply", :class => "reply_button"  %>
 		<% end %>
 	<% end %>
 
