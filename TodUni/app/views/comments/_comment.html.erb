@@ -9,12 +9,18 @@
 	<% #TODO: Delete comment %>
 	<% #TODO: Cancel commnet %>
 	<% #TODO: Display comment's count %>
-	<% if user_signed_in? %>
-		<%= form_for [comment, Comment.new] do |f| %>
-			<%= f.text_area :body, placeholder: "Add a Reply", :class => "reply_box" %><br/>
-			<%= f.submit "Reply", :class => "reply_button"  %>
+
+
+	<div class="reply_form">
+		<% if user_signed_in? %>
+			<%= form_for [comment, Comment.new] do |f| %>
+				<%= button_tag "Reply", type: :button, :class => "reply_btn" %>
+				<%= f.text_area :body, placeholder: "Add a Reply", :class => "reply_box" %><br/>
+				<%= f.submit "Save", :class => "save_btn" %>
+				<%= button_tag "Cancel", type: :reset, :class => "cancel_btn" %>
+			<% end %>
 		<% end %>
-	<% end %>
+	</div>
 
   <ul>
       <%= render partial: 'comments/comment', collection: comment.comments %>
