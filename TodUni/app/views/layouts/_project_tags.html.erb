@@ -1,16 +1,19 @@
 <h3>Tags</h3>
 <div id="tags">
-  <%= form_for(@project, url: add_tags_path(@project)) do |f| %>
-    <div class="fields">
-      <%= f.text_field :tag_list %>
-    </div>
-    <div class="actions">
-      <%= f.submit "Agregar tags" %>
-    </div>
+  <% if @project.owner? @user %>
+    <%= form_for(@project, url: add_tags_path(@project)) do |f| %>
+      <div class="fields">
+        <%= f.text_field :tag_list %>
+      </div>
+      <div class="actions">
+        <%= f.submit "Agregar tags" %>
+      </div>
+    <% end %>
   <% end %>
   <ul>
     <% @tags.each do |tag| %>
       <li class="tag"><%= tag %></li>
     <% end %>
+  </ul>
 </div>
 

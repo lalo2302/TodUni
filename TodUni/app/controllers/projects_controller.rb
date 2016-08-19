@@ -1,4 +1,6 @@
 class ProjectsController < ApplicationController
+  before_filter :authenticate_user!, except: [ :index, :show ]
+  #TODO: Check lalo's notes for projects profiles
 
   def index
     @user = current_user
@@ -36,7 +38,6 @@ class ProjectsController < ApplicationController
   	end
   end
 
-	#TODO: rename globally to upload_picture
   def update_picture
     #TODO: Refactor
     @project = Project.find(params[:id])
@@ -53,7 +54,7 @@ class ProjectsController < ApplicationController
 	#TODO: delete_picture
 	
 	def add_members
-		email = params[:email]
+		email = params[:project][:email] if params[:project].present?
 		project = current_user.projects.find(params[:id])
 		@members = project.users
 		if User.exists?(email: email)
@@ -84,9 +85,5 @@ class ProjectsController < ApplicationController
 
     def picture_params
       params.fetch(:project, {}).permit(:picture)
-    end
-
-    def emails
-      params.require(:project).permit(:users)
     end
 end

@@ -1,19 +1,18 @@
 <h3>Miembros</h3>
-<% #FIX: hidden id field in members %>
-<%= form_tag(add_members_path) do  %>
-	<div class="fields">
-		<%= text_field_tag :email%>
-	</div>
-	<%= hidden_field_tag 'id', @project.id %>
-	<div class="actions">
-		<%= submit_tag "Agregar" %>
-	</div>
+<% if @project.owner? @user %>
+  <%= form_for(@project, url:add_members_path(@project)) do |f|  %>
+    <div class="fields">
+      <%= f.text_field :email %>
+    </div>
+    <div class="actions">
+      <%= f.submit "Agregar" %>
+    </div>
+  <% end %>
 <% end %>
 <div class="members">
   <ul>
-    <li class="owner"><%= link_to @owner.name, @owner_path %>
+    <li class="owner"><%= link_to @owner.name, profile_path(@owner) %>
   <% @members.each do |member| %>
-    <% #TODO: link_to profile_path(member) %>
     <li class="member"><%= link_to member.name, profile_path(member) %></li>
   <% end %>
   </ul>

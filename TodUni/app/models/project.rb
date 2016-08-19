@@ -1,4 +1,5 @@
 class Project < ActiveRecord::Base
+  attr_accessor :email
 	acts_as_taggable_on :tags
 	enum status: [:preproyecto, :en_progreso, :terminado, :cancelado]
 
@@ -33,5 +34,16 @@ class Project < ActiveRecord::Base
       members << part.user
     end
     return members
+  end
+
+  def member?(user)
+    participants = []
+    participations = self.participations
+    participations.each do |part|
+      if user == part.user
+        return true
+      end
+    end
+    return false
   end
 end

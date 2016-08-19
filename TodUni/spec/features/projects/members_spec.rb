@@ -4,7 +4,7 @@ describe "Members features" do
 
   def go_to_project
     login_as(user)
-    visit project_path(user.projects[0])
+    visit project_path(user.projects.first)
   end
 
   context "when visits the project 1st time" do
@@ -32,7 +32,7 @@ describe "Members features" do
       go_to_project
 
       user2 = FactoryGirl.create(:user)
-      fill_in :email, :with => user2.email
+      fill_in 'project[email]', :with => user2.email
       click_button "Agregar"
 
       expect(page).to have_css('.member', :count => 1)
@@ -42,7 +42,7 @@ describe "Members features" do
       go_to_project
 
       user2 = FactoryGirl.build(:user)
-      fill_in :email, :with => user2.email
+      fill_in 'project[email]', :with => user2.email
       click_button "Agregar"
 
       expect(page).not_to have_css('.member')
