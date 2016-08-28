@@ -1,7 +1,7 @@
 class Project < ActiveRecord::Base
   attr_accessor :email
 	acts_as_taggable_on :tags
-	enum status: [:preproyecto, :en_progreso, :terminado, :cancelado]
+	enum status: [:preproject, :in_progress, :finished, :canceled]
 
 	belongs_to :mentor
 	belongs_to :city

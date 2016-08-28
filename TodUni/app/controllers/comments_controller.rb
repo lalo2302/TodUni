@@ -17,10 +17,19 @@ class CommentsController < ApplicationController
 		end
 	end
 
+	def update #edit and delete
+		@comment = Comment.find(params[:id])
+		@comment.status = "edited"
+		if @comment.update_attributes(comment_params)
+			flash.now[:success] = "Comment updated"
+		end
+		redirect_to(:back)
+	end
+
 	private
 
 	def comment_params
-		params.require(:comment).permit(:body)
+		params.require(:comment).permit(:body, :status)
 	end
 
 	def find_parent

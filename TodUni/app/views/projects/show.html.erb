@@ -26,6 +26,7 @@
 	<% end %>
 
 	<ul>
+		Comments count: <%= get_comments_count(@project) %>
 		<%= render partial: 'comments/comment', collection: @project.comments %>
 	</ul>
 </div>
