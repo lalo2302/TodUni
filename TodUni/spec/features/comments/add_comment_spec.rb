@@ -25,14 +25,14 @@ describe "The comments section" do
 			go_to_project
 			add_comment
 
-			expect(page).to have_text('Test comment', :count => 1)
+			expect(page).to have_text('Comments count: 1')
 		end
 
 		it "displays commenter's name" do
 			go_to_project
 			add_comment
 			
-			expect(page).to have_text('by ' + user.name, :count => 1)
+			expect(page).to have_text(user.name)
 		end
 
 		it "displays commenter's picture" do
