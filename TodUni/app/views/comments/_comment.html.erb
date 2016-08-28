@@ -1,24 +1,55 @@
+<% #TODO: link to user's profile %>
+<% #TODO: Use Ajax for actions %>
+<% #TODO: Sort comments %>
 <li>
-	<%= image_tag comment.user.avatar.url, :class => "img_commenter" unless comment.user.avatar.file.nil? %>
-  <%= comment.body %> -
-	<small>Submitted <%= time_ago_in_words(comment.created_at) %> ago - by <%= comment.user.name %></small>
+	<% if comment.status != "deleted" %>
+		<%= image_tag comment.user.avatar.url, :class => "img_commenter" unless comment.user.avatar.file.nil? %>
+		<%= comment.body %>
+	<% else %>
+		[deleted]
+	<% end %>
 
-	<% #TODO: Delete comment %>
-
-
-	<div class="reply_form">
-		<% if user_signed_in? %>
-			<%= form_for [comment, Comment.new] do |f| %>
-				<%= button_tag "Reply", type: :button, :class => "reply_btn" %>
-				<%= f.text_area :body, placeholder: "Add a Reply", :class => "reply_box" %><br/>
-				<%= f.submit "Save", :class => "save_btn" %>
-				<%= button_tag "Cancel", type: :reset, :class => "cancel_btn" %>
-			<% end %>
+	<small>
+		<b> <%= comment.user.name unless comment.status == "deleted" %></b> -
+		<%= time_ago_in_words(comment.created_at) %> ago 
+		<% if comment.status == "edited" %>
+			<small>
+			(last <%= comment.status %> <%= time_ago_in_words(comment.updated_at) %> ago)
+			</small>
 		<% end %>
-	</div>
+
+		<% if comment.status != "deleted" %>
+			| <a class="reply_btn"> reply </a>
+
+			<% if current_user == comment.user %>
+				| <%= link_to "delete", comment_path(comment, "comment[status]" => "deleted"), 
+											:method => :put, :confirm => "Sure?" %>
+				| <a class="edit_btn"> edit </a>
+
+				<div class ="edit_form">
+					<%= form_for comment do |f| %>
+						<%= f.text_area :body, :class => "comment_box" %><br/>
+						<%= f.submit "Save", :class => "save_btn" %>
+						<%= button_tag "Cancel", type: :reset, :class => "cancel_btn" %>
+					<% end %>
+				</div>
+			<% end %>
+
+			<div class="new_form">
+				<%= form_for [comment, Comment.new] do |f| %>
+					<%= f.text_area :body, :class => "comment_box" %><br/>
+					<%= f.submit "Save", :class => "save_btn" %>
+					<%= button_tag "Cancel", type: :reset, :class => "cancel_btn" %>
+				<% end %>
+			</div>
+		<% end %>
+
+		<% #TODO: edit comment %>
+	</small>
+
+	<% #TODO: Comment history in user profile %>
 
   <ul>
       <%= render partial: 'comments/comment', collection: comment.comments %>
   </ul>
-
 </li>

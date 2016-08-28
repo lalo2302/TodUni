@@ -1,18 +1,20 @@
+// TODO: transcribe to coffee
 $(document).ready(function() {
-	$('.save_btn').hide();
-	$('.reply_box').hide();
-	$('.cancel_btn').hide();
+	$('.new_form').hide();
+	$('.edit_form').hide();
 
 	$('.reply_btn').click(function(){
-		$(this).siblings('.reply_box').show();	
-		$(this).siblings('.save_btn').show();	
-		$(this).siblings('.cancel_btn').show();	
-		$(this).hide();
+		$(this).siblings('.edit_form').hide();
+		$(this).siblings('.new_form').show();
 	});
+
+	$('.edit_btn').click(function(){
+		$(this).siblings('.new_form').hide();
+		$(this).siblings('.edit_form').show();
+	});
+
 	$('.cancel_btn').click(function(){
-		$(this).siblings('.reply_box').hide();
-		$(this).siblings('.save_btn').hide();	
-		$(this).hide();
-		$(this).siblings('.reply_btn').show();
+		$('.new_form').hide();
+		$('.edit_form').hide();
 	});
 });
