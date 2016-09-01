@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160801165252) do
+ActiveRecord::Schema.define(version: 20160826161348) do
 
   create_table "cities", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -23,14 +23,16 @@ ActiveRecord::Schema.define(version: 20160801165252) do
   add_index "cities", ["state_id"], name: "index_cities_on_state_id", using: :btree
 
   create_table "comments", force: :cascade do |t|
-    t.text     "text",       limit: 65535
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
-    t.integer  "project_id", limit: 4
-    t.integer  "user_id",    limit: 4
+    t.text     "body",           limit: 65535
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
+    t.integer  "user_id",        limit: 4
+    t.integer  "parent_id",      limit: 4
+    t.string   "parent_type",    limit: 255
+    t.integer  "comments_count", limit: 4
+    t.integer  "status",         limit: 4,     default: 1
   end
 
-  add_index "comments", ["project_id"], name: "index_comments_on_project_id", using: :btree
   add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
   create_table "evidences", force: :cascade do |t|

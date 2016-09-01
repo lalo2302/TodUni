@@ -14,23 +14,6 @@
     <%= render 'layouts/project_picture' %>
 	</div>
 </div>
-<small> Submitted <%= time_ago_in_words(@project.created_at) %> ago</small>
-<div>
-	<h3> Comments </h3>
-
-	<% if user_signed_in? %>
-		<%= form_for [@project, Comment.new] do |f| %>
-			<%= f.text_area :body, placeholder: "Add a comment" %>
-			<%= f.submit "Add comment" %>
-		<% end %>
-	<% end %>
-
-	<ul>
-		Comments count: <%= get_comments_count(@project) %>
-		<%= render partial: 'comments/comment', collection: @project.comments %>
-	</ul>
-</div>
-<% #FIXME: Edit project's info in show view shouldn't be possible %>
 	<%= render 'layouts/project_members' %>
 
   <%= render 'layouts/project_tags' %>

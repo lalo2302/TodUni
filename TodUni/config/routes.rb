@@ -5,7 +5,6 @@ Rails.application.routes.draw do
 
 		root "home#index"
 		devise_for :users, skip: :omniauth_callbacks, :controllers => { :registrations => "registrations" }
-
 		resources :dashboards, :only => :show
     resources :profiles, :only => :show
 
@@ -17,6 +16,7 @@ Rails.application.routes.draw do
 			resources :comments
 		end
 
+    get 'projects/d/:id', to: 'projects#dashboard', as: 'project_dashboard'
 	end
 
 	resources :locales do
