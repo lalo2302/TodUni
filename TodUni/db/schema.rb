@@ -48,9 +48,11 @@ ActiveRecord::Schema.define(version: 20160801165252) do
   add_index "evidences", ["user_id"], name: "index_evidences_on_user_id", using: :btree
 
   create_table "participations", force: :cascade do |t|
-    t.integer "user_id",    limit: 4
-    t.integer "project_id", limit: 4
-    t.integer "role",       limit: 4, default: 0
+    t.integer  "user_id",    limit: 4
+    t.integer  "project_id", limit: 4
+    t.integer  "role",       limit: 4, default: 0
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
   end
 
   add_index "participations", ["project_id"], name: "index_participations_on_project_id", using: :btree
