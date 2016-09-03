@@ -1,0 +1,49 @@
+<% #TODO: link to user's profile %>
+<% #TODO: Use Ajax for actions %>
+<% #TODO: Sort comments %>
+<li>
+	<%= image_tag comment.user.avatar.url, :class => "img_commenter" unless comment.user.avatar.file.nil? %>
+	<%= comment.body %>
+
+	<small>
+		<b> <%= comment.user.name %></b> -
+		<%= time_ago_in_words(comment.created_at) %> ago 
+		<% if comment.created_at != comment.updated_at %>
+			<small>
+			(last edited <%= time_ago_in_words(comment.updated_at) %> ago)
+			</small>
+		<% end %>
+
+		| <a class="reply_btn"> reply </a>
+
+		<% if current_user == comment.user %>
+			| <%= link_to "delete", comment_path(comment, "comment[status]" => "deleted"), 
+										:method => :put, :confirm => "Sure?" %>
+			| <a class="edit_btn"> edit </a>
+
+			<div class ="edit_form">
+				<%= form_for comment do |f| %>
+					<%= f.text_area :body, :class => "comment_box" %><br/>
+					<%= f.submit "Save", :class => "save_btn" %>
+					<%= button_tag "Cancel", type: :reset, :class => "cancel_btn" %>
+				<% end %>
+			</div>
+		<% end %>
+
+		<div class="new_form">
+			<%= form_for [comment, Comment.new] do |f| %>
+				<%= f.text_area :body, :class => "comment_box" %><br/>
+				<%= f.submit "Save", :class => "save_btn" %>
+				<%= button_tag "Cancel", type: :reset, :class => "cancel_btn" %>
+			<% end %>
+		</div>
+
+		<% #TODO: edit comment %>
+	</small>
+
+	<% #TODO: Comment history in user profile %>
+
+  <ul>
+      <%= render partial: 'projects/comment', collection: comment.children %>
+  </ul>
+</li>

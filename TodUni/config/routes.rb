@@ -9,13 +9,9 @@ Rails.application.routes.draw do
 
 		devise_for :users, :controllers => { :registrations => "registrations" }
 
-    resources :projects do
-			resources :comments
-		end
+    resources :projects
+		resources :comments
 
-		resources :comments do
-			resources :comments
-		end
 
 	end
 
