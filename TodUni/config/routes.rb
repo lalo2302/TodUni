@@ -9,14 +9,10 @@ Rails.application.routes.draw do
 		resources :dashboards, :only => :show
     resources :profiles, :only => :show
 
-    resources :projects do
-			resources :comments
-		end
+		devise_for :users, :controllers => { :registrations => "registrations" }
 
-		resources :comments do
-			resources :comments
-		end
-
+    resources :projects
+		resources :comments
 	end
 
 	resources :locales do

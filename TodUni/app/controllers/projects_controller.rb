@@ -18,6 +18,7 @@ class ProjectsController < ApplicationController
     @members = @project.members
     @owner = @project.owner
     @tags = @project.tag_list
+		@new_comment = Comment.build_from(@project, @user.id, "") unless @user.blank?
 	end
 
   def new

@@ -7,7 +7,6 @@ class User < ActiveRecord::Base
 
 	enum locale: [:en, :es]
 
-  has_many :comments
   has_many :evidences
 	has_many :participations
 	has_many :projects, -> { distinct }, through: :participations

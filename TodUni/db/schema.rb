@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160801165252) do
+ActiveRecord::Schema.define(version: 20160902191957) do
 
   create_table "cities", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -23,14 +23,20 @@ ActiveRecord::Schema.define(version: 20160801165252) do
   add_index "cities", ["state_id"], name: "index_cities_on_state_id", using: :btree
 
   create_table "comments", force: :cascade do |t|
-    t.text     "text",       limit: 65535
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
-    t.integer  "project_id", limit: 4
-    t.integer  "user_id",    limit: 4
+    t.integer  "commentable_id",   limit: 4
+    t.string   "commentable_type", limit: 255
+    t.string   "title",            limit: 255
+    t.text     "body",             limit: 65535
+    t.string   "subject",          limit: 255
+    t.integer  "user_id",          limit: 4,     null: false
+    t.integer  "parent_id",        limit: 4
+    t.integer  "lft",              limit: 4
+    t.integer  "rgt",              limit: 4
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
-  add_index "comments", ["project_id"], name: "index_comments_on_project_id", using: :btree
+  add_index "comments", ["commentable_id", "commentable_type"], name: "index_comments_on_commentable_id_and_commentable_type", using: :btree
   add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
   create_table "evidences", force: :cascade do |t|
@@ -48,9 +54,11 @@ ActiveRecord::Schema.define(version: 20160801165252) do
   add_index "evidences", ["user_id"], name: "index_evidences_on_user_id", using: :btree
 
   create_table "participations", force: :cascade do |t|
-    t.integer "user_id",    limit: 4
-    t.integer "project_id", limit: 4
-    t.integer "role",       limit: 4, default: 0
+    t.integer  "user_id",    limit: 4
+    t.integer  "project_id", limit: 4
+    t.integer  "role",       limit: 4, default: 0
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
   end
 
   add_index "participations", ["project_id"], name: "index_participations_on_project_id", using: :btree

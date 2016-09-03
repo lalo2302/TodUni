@@ -23,7 +23,7 @@ FactoryGirl.define do
 		password_confirmation "12345678"
 
     factory :user_complete do
-      name "Example"
+      name "Example user"
       date_birth Date.today - 20.years
       after :create do |user|
         user.update_column(:avatar, 'spec/support/valid_image.jpg')
