@@ -11,7 +11,7 @@ describe "The comments section" do
 
 	def add_comment
 		fill_in 'comment_body', with: 'Test comment'
-		click_on 'Add comment'
+		click_on 'Post comment'
 	end
 
 	context "logged in" do
