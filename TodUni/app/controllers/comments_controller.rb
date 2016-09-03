@@ -1,23 +1,21 @@
 class CommentsController < ApplicationController
-	before_action :find_parent
-
-	def new
-		@comment = Comment.new
-	end
+	before_action :authenticate_user!
 
 	def create
-		@user = current_user
-		@comment = @parent.comments.new comment_params
-		@comment.user = @user
+		commentable = commentable_type.constantize.find(commentable_id)
+		@comment = Comment.build_from(commentable, current_user.id, body)
 
-		if @comment.save
-			redirect_to :back, notice: "Comment successfully posted"
-		else
-			redirect_to :back, notice: "Comment error"
+		respond_to do |format|
+			if @comment.save
+				make_child_comment
+				format.html { redirect_to :back, notice => 'Comment successfully posted' }
+			else
+				format.html { render :action => "new" }
+			end
 		end
 	end
 
-	def update #edit and delete
+	def update
 		@comment = Comment.find(params[:id])
 		@comment.status = "edited"
 		if @comment.update_attributes(comment_params)
@@ -29,12 +27,30 @@ class CommentsController < ApplicationController
 	private
 
 	def comment_params
-		params.require(:comment).permit(:body, :status)
+		params.require(:comment).permit(:body, :commentable_id, :commentable_type, :comment_id)
 	end
 
-	def find_parent
-		@parent = Comment.find_by_id(params[:comment_id]) if params[:comment_id]
-		@parent = Project.find_by_id(params[:project_id]) if params[:project_id]
+	def commentable_type
+		comment_params[:commentable_type]
+	end
+
+	def commentable_id
+		comment_params[:commentable_id]
+	end
+	
+	def comment_id
+		comment_params[:comment_id]
+	end
+
+	def body
+		comment_params[:body]
+	end
+
+	def make_child_comment
+		return "" if comment_id.blank?
+
+		parent_comment = Comment.find(comment_id)
+		@comment.move_to_child_of(parent_comment)
 	end
 
 end
