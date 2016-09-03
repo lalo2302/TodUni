@@ -12,9 +12,10 @@ class ProjectsController < ApplicationController
     end
   end
 
-	def show
-    @user = current_user
-		@project = Project.find(params[:id])
+  def show
+    @project = Project.find(params[:id])
+    #FIXME: should the user be the owner? or the current user
+    @user = @project.owner
     @members = @project.members
     @owner = @project.owner
     @tags = @project.tag_list
@@ -33,11 +34,19 @@ class ProjectsController < ApplicationController
     
   	if @project.save
 			@user.own_project @project
-  		redirect_to @project
+  		redirect_to project_dashboard_path @project
 		else
 			render :new
   	end
   end
+
+	def dashboard
+    @user = current_user
+		@project = Project.find(params[:id])
+    @members = @project.members
+    @owner = @project.owner
+    @tags = @project.tag_list
+	end
 
   def update_picture
     #TODO: Refactor

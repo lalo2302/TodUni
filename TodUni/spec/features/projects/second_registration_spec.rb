@@ -5,7 +5,7 @@ describe "The second registration process" do
   
   def go_to_project
     login_as(user)
-    visit project_path(project)
+    visit project_dashboard_path(project)
   end
 
   context "uploading a picture" do

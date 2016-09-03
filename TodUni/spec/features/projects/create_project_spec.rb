@@ -18,7 +18,7 @@ describe "The create-a-project process" do
 		 	fill_in :description, :with => 'Descripción del proyecto'
 			click_button "Crear proyecto"
 
-			expect(page).to have_current_path(project_path(Project.last))
+			expect(page).to have_current_path(project_dashboard_path(user.projects.last))
 		end
 	end
 	
