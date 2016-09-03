@@ -1,11 +1,11 @@
 class Project < ActiveRecord::Base
 	acts_as_taggable_on :tags
+	acts_as_commentable
 	enum status: [:preproject, :in_progress, :finished, :canceled]
 
 	belongs_to :mentor
 	belongs_to :city
 	has_many :phases
-	has_many :comments, as: :parent, dependent: :delete_all
 	has_many :participations
 	has_many :users, -> { distinct }, through: :participations
 
