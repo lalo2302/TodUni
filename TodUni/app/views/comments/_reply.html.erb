@@ -1,20 +1,48 @@
+<% #TODO: report form & functionality %>
+<% #TODO: use Ajax for actions %>
+<% #TODO: sort comments functionality %>
+<% #TODO: edit functionality %>
+<% #TODO: delete functionality %>
+
 <% comments.each do |comment| %>
-	<li>
   <div class="comments-show">
     <div class="comment">
 			<%= image_tag comment.user.avatar.url, :class => "img_commenter" unless comment.user.avatar.file.nil? %>
 			<small>
 				<b> <%= comment.user.name %></b> -
 				<%= time_ago_in_words(comment.created_at) %> ago 
-				<% if comment.created_at != comment.updated_at %>
+				<% if !comment.edited_at.blank? %>
 					<small>
-					(last edited <%= time_ago_in_words(comment.updated_at) %> ago)
+					(last edited <%= time_ago_in_words(comment.edited_at) %> ago)
 					</small>
 				<% end %>
 			</small>
-      <p><%= comment.body %><br></p>
+			<p>
+			<div class="comment-body"><%= comment.body %></div>
+			<% if comment.user == current_user %>
+				<div class="edit-form">
+					<%= form_for comment do |f| %>
+						<div class="field form-group">
+							<%= f.text_area :body, class: 'form-control' %>
+							<%= submit_tag "Edit", class: 'btn btn-primary' %>
+							<%= button_tag "Cancel", type: :reset, :class => "btn btn-primary comment-cancel" %>
+						</div>
+					<% end %>
+				</div>
+			<% end %>
+			</p>
 			<% unless @new_comment.blank? %>
-				<div class="comment-nav"><a href="#" class="comment-reply">reply</a></div>
+				<div class="comment-nav">
+					| <a class="comment-reply">reply</a>
+					<% if comment.user == current_user %>
+						| <a class="comment-edit">edit</a>
+						| <a class="comment-delete">
+								<%= link_to "delete", comment_path(comment, "comment[status]" => "deleted"), 
+														:method => :put, :confirm => "Sure?" %>
+							</a>
+					<% end %>
+					| <a class="comment-report">report</a>
+				</div>
 				<div class="reply-form">
 					<%= form_for @new_comment do |f| %>
 						<%= f.hidden_field :commentable_id, value: @new_comment.commentable_id %>
@@ -22,17 +50,13 @@
 						<%= f.hidden_field :comment_id, value: comment.id %>
 						<div class="field form-group">
 							<%= f.text_area :body, class: 'form-control' %>
-						</div>
-						<div class="field form-group">
 							<%= submit_tag "Post Reply", class: 'btn btn-primary' %>
+							<%= button_tag "Cancel", type: :reset, :class => "btn btn-primary comment-cancel" %>
 						</div>
 					<% end %>
 				</div>
 			<% end %>
     </div>
-		<ul>
-    <%= render partial: "comments/reply", locals: {comments: comment.children} %>
-		</ul>
+			<%= render partial: "comments/reply", locals: {comments: comment.children} %>
   </div>
-	</li>
 <% end %>
