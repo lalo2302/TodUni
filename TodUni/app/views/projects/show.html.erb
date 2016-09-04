@@ -3,7 +3,6 @@
 	<aside class="col-md-3">
 		<section class="info_proyecto">
 			<h1> <%= @project.name %> </h1>
-			<br/>id: 				<%= @project.id %>
 			<br/>descripcion: 		<%= @project.description %>
 			<br/>coordenadas: 		<%= @project.coordinates %>
 			<br/>estatus: 			<%= @project.status %>
@@ -11,8 +10,11 @@
 		</section>
 	</aside>
 	<div class="col-md-6">
-    <%= render 'layouts/project_picture' %>
+    <%= render 'layouts/project_tags' %>
 	</div>
+  <div>
+    <%= render 'layouts/project_members' %>
+  </div>
 </div>
 <small> Submitted <%= time_ago_in_words(@project.created_at) %> ago</small>
 <div>
@@ -30,7 +32,3 @@
 		<%= render partial: 'comments/comment', collection: @project.comments %>
 	</ul>
 </div>
-<% #FIXME: Edit project's info in show view shouldn't be possible %>
-	<%= render 'layouts/project_members' %>
-
-  <%= render 'layouts/project_tags' %>

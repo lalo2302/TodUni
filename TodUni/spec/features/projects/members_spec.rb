@@ -11,13 +11,13 @@ describe "Members features" do
     it "only has 1 owner" do
       go_to_project
 
-      expect(page).to have_css(".owner", :count => 1)
+      expect(page).to have_xpath('//li[@id="owner"]', :count => 1)
     end
 
     it "the owner is the user" do
       go_to_project
 
-      expect(find('li.owner')).to have_content(user.name)
+      expect(find('li#owner')).to have_content(user.name)
     end
 
     it "doesn't have members" do
