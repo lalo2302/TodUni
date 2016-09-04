@@ -40,6 +40,8 @@ FactoryGirl.define do
         after(:create) do |user|
           project = FactoryGirl.create(:approved_project)
           user.own_project project
+        end
+      end
     end
 	end	
 end

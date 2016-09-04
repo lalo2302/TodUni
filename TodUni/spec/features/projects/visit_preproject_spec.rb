@@ -63,7 +63,6 @@ describe "Visiting another user project process" do
 
       expect(page).not_to have_button("¡Vamos!")
     end 
-    end
   end
 
   context "when asks to be a project's member" do
