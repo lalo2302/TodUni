@@ -17,11 +17,14 @@ class CommentsController < ApplicationController
 
 	def update
 		@comment = Comment.find(params[:id])
-		@comment.status = "edited"
-		if @comment.update_attributes(comment_params)
-			flash.now[:success] = "Comment updated"
+		@comment.edited_at = DateTime.now
+		@comment.body = body
+		if @comment.save
+			flash.now[:success] = "Comment successfully updated"
+		else
+			flash.now[:error] = "Your comment could not be updated"
 		end
-		redirect_to(:back)
+		redirect_to :back
 	end
 
 	private
