@@ -11,7 +11,7 @@
 			<small>
 				<b> <%= comment.user.name %></b> -
 				<%= time_ago_in_words(comment.created_at) %> ago 
-				<% if !comment.edited_at.blank? %>
+				<% if comment.edited? %>
 					<small>
 					(last edited <%= time_ago_in_words(comment.edited_at) %> ago)
 					</small>
@@ -25,7 +25,9 @@
 						<div class="field form-group">
 							<%= f.text_area :body, class: 'form-control' %>
 							<%= submit_tag "Edit", class: 'btn btn-primary' %>
-							<%= button_tag "Cancel", type: :reset, :class => "btn btn-primary comment-cancel" %>
+							<%= button_tag "Cancel",
+								type: :reset, 
+								class: 'btn btn-primary comment-cancel' %>
 						</div>
 					<% end %>
 				</div>
@@ -37,8 +39,9 @@
 					<% if comment.user == current_user %>
 						| <a class="comment-edit">edit</a>
 						| <a class="comment-delete">
-								<%= link_to "delete", comment_path(comment, "comment[status]" => "deleted"), 
-														:method => :put, :confirm => "Sure?" %>
+								<%= link_to "delete", comment_path(comment), 
+									method: :delete, 
+									data: { confirm: 'Sure?' } %>
 							</a>
 					<% end %>
 					| <a class="comment-report">report</a>
@@ -51,7 +54,9 @@
 						<div class="field form-group">
 							<%= f.text_area :body, class: 'form-control' %>
 							<%= submit_tag "Post Reply", class: 'btn btn-primary' %>
-							<%= button_tag "Cancel", type: :reset, :class => "btn btn-primary comment-cancel" %>
+							<%= button_tag "Cancel",
+								type: :reset,
+								class: 'btn btn-primary comment-cancel' %>
 						</div>
 					<% end %>
 				</div>

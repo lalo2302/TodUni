@@ -18,11 +18,24 @@ class CommentsController < ApplicationController
 	def update
 		@comment = Comment.find(params[:id])
 		@comment.edited_at = DateTime.now
+		@comment.edited!
 		@comment.body = body
 		if @comment.save
 			flash.now[:success] = "Comment successfully updated"
 		else
 			flash.now[:error] = "Your comment could not be updated"
+		end
+		redirect_to :back
+	end
+
+	def destroy
+		@comment = Comment.find(params[:id])
+		@comment.deleted!
+		@comment.body = "[deleted]"
+		if @comment.save
+			flash.now[:succes] = "Comment successfully deleted"
+		else
+			flash.now[:error] = "Your comment could not be deleted"
 		end
 		redirect_to :back
 	end
