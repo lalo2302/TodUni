@@ -15,14 +15,19 @@
 	</div>
 </div>
 <small> Submitted <%= time_ago_in_words(@project.created_at) %> ago</small>
-<div>
-	<h3> Comments </h3>
 
-	<ul>
-		<%= render partial: 'comments/template', locals: { commentable: @project, new_comment: @new_comment } %>
-	</ul>
-</div>
 <% #FIXME: Edit project's info in show view shouldn't be possible %>
-	<%= render 'layouts/project_members' %>
 
-  <%= render 'layouts/project_tags' %>
+<div class="members-section">
+	<%= render 'layouts/project_members' %>
+</div>
+
+<div class="tags-section">
+	<%= render 'layouts/project_tags' %>
+</div>
+
+<div class="comments-section">
+	<h3> Comments </h3>
+	<%= render partial: 'comments/template', 
+						 locals: { commentable: @project, new_comment: @new_comment } %>
+</div>
