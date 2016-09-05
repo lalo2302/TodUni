@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160902191957) do
+ActiveRecord::Schema.define(version: 20160904224106) do
 
   create_table "cities", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -28,12 +28,14 @@ ActiveRecord::Schema.define(version: 20160902191957) do
     t.string   "title",            limit: 255
     t.text     "body",             limit: 65535
     t.string   "subject",          limit: 255
-    t.integer  "user_id",          limit: 4,     null: false
+    t.integer  "user_id",          limit: 4,                 null: false
     t.integer  "parent_id",        limit: 4
     t.integer  "lft",              limit: 4
     t.integer  "rgt",              limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "edited_at"
+    t.integer  "status",           limit: 4,     default: 1, null: false
   end
 
   add_index "comments", ["commentable_id", "commentable_type"], name: "index_comments_on_commentable_id_and_commentable_type", using: :btree

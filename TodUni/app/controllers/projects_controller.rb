@@ -13,9 +13,8 @@ class ProjectsController < ApplicationController
   end
 
   def show
+    @user = current_user
     @project = Project.find(params[:id])
-    #FIXME: should the user be the owner? or the current user
-    @user = @project.owner
     @members = @project.members
     @owner = @project.owner
     @tags = @project.tag_list
@@ -42,7 +41,11 @@ class ProjectsController < ApplicationController
 
 	def dashboard
     @user = current_user
-		@project = Project.find(params[:id])
+		@project = current_user.projects.find_by_id(params[:id])
+    if @project.nil?
+      redirect_to projects_path
+      return
+    end
     @members = @project.members
     @owner = @project.owner
     @tags = @project.tag_list

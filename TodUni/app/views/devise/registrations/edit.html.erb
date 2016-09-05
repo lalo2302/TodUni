@@ -14,7 +14,8 @@
   </div>
 
 	<div>
-		<%= #TODO: order alphabetically %>
+		<% #TODO: order alphabetically %>
+    <% #FIXME: Model should not touch the view %>
 		<%= f.label :locale %><br />
 		<%= f.select :locale, User.locales.keys.map {|locale| [locale_name(locale), locale]} %>
 	</div>

@@ -9,9 +9,9 @@
     </div>
   <% end %>
 <% end %>
-<div class="members">
-  <ul>
-    <li class="owner"><%= link_to @owner.name, profile_path(@owner) %>
+<div>
+  <ul id="members">
+    <li id="owner"><%= link_to @owner.name, profile_path(@owner) %>
   <% @members.each do |member| %>
     <li class="member"><%= link_to member.name, profile_path(member) %></li>
   <% end %>
