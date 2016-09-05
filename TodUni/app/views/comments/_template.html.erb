@@ -1,11 +1,11 @@
 <div class="comments-header">
   <h4>
-  	<%= commentable.comment_threads.count == 0 ? "No comments" : "Comments count: " + commentable.comment_threads.count.to_s %> 
+		<%= commentable.comment_threads.count == 0 ? "No comments" : "Comments count: " + commentable.comment_threads.count.to_s %> 
   </h4>
 </div>
 
 <%= render partial: "comments/form", locals: {new_comment: new_comment} unless new_comment.blank? %>
 
 <div class="comments-container">
-  <%= render partial: "comments/reply", locals: {comments: commentable.root_comments} %>
+	<%= render partial: "comments/reply", locals: {comments: commentable.root_comments.order(created_at: :desc) } %>
 </div>
