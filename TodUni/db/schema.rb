@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160904224106) do
+ActiveRecord::Schema.define(version: 20160907151828) do
 
   create_table "cities", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -67,7 +67,7 @@ ActiveRecord::Schema.define(version: 20160904224106) do
   add_index "participations", ["user_id"], name: "index_participations_on_user_id", using: :btree
 
   create_table "phases", force: :cascade do |t|
-    t.integer  "phase_number",   limit: 4
+    t.integer  "type",           limit: 4
     t.text     "description",    limit: 65535
     t.date     "date_end"
     t.integer  "status",         limit: 4,     default: 0
