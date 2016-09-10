@@ -18,3 +18,10 @@
 
 # Ignore TODO file
 /TODO
+
+# Ignore old gemsets and versions
+/.ruby-gemset.*
+/.ruby-version.*
+
+# Ignore byebug_history
+/.byebug_history
